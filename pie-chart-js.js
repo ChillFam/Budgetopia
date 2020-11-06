@@ -53,40 +53,42 @@ class PChart extends HTMLElement {
             this.vals.push(parseFloat(elements[i].getAttribute("value")));
             this.colours.push(elements[i].getAttribute("colour"))
         }
-        var shadow = this.shadowRoot;
+        //var shadow = this.shadowRoot;
         var c = this.shadowRoot.querySelector("canvas");
-        var positionInfo = this.getBoundingClientRect();
-        var height = positionInfo.height;
-        var width = positionInfo.width;
+        //var positionInfo = this.getBoundingClientRect();
+        //var height = positionInfo.height;
+        //var width = positionInfo.width;
+        var height = 1000;
+        var width = 1000; //change size of window to draw in
         c.width  = width;
         c.height = height;
         var ctx = c.getContext("2d");
 
-        var font_size = parseInt(width * 0.02166847);
+        var font_size = parseInt(width * 0.2166847); // font size
 
-        var max_font_size = 28;
+        var max_font_size = 20;
 
         if (font_size > max_font_size) {
             font_size = max_font_size;
         }
 
 
-        this.y_origin = height * 0.5;
-        this.x_origin = c.width * 0.5;
-        this.radius = c.width * 0.35;
-        var max_radius = c.height * 0.35;
+        this.y_origin = height * 0.5/2.0; //pos of center of chart
+        this.x_origin = c.width * 0.5/2.0;
+        this.radius = c.width * 0.35/2.0;
+        var max_radius = c.height * 0.35/2.0;
         if (this.radius > max_radius) {
             this.radius = max_radius;
         }
 
         var share_percentage = [];
 
-        var x = c.width - parseInt(c.width * 0.12019231) * 1.25;
+        var x = (c.width - parseInt(c.width * 0.12019231) * 1.25)/2; //position of textbox
         var y = font_size;
 
         ctx.beginPath();
-        var rect_height = (this.names.length * font_size) + 20;
-        ctx.rect(x, y+10, parseInt(c.width * 0.12019231), rect_height);
+        var rect_height = (this.names.length * font_size) + 40;
+        ctx.rect(x, y+10, rect_height/*parseInt(c.width * 0.12019231)*/, rect_height); //draws text box for legend
         ctx.stroke();
         y += 10;
         for (var i=0;i<this.names.length;i++)
@@ -158,9 +160,81 @@ class PChart extends HTMLElement {
         c.height = height;
         this.drawChart();
     }
-
+    getPos = function(e){
+        var mouse_x = e.clientX - this.getBoundingClientRect().left;
+        var mouse_y = e.clientY - this.getBoundingClientRect().top;
+        var mouse_angle = this.getAngle(mouse_x,mouse_y,this.x_origin, this.y_origin);
+        if (mouse_angle != null)
+        {
+            //console.log(mouse_angle);
+            //console.log(this.arcs);
+            for (var i = 0; i < this.arcs.length; i++)
+            {
+                if (mouse_angle > this.arcs[i][0] && mouse_angle < this.arcs[i][1])
+                {
+                    if (!this.shadowRoot.querySelector("#Mouse_Point_Div"))
+                    {
+                        var c = this.shadowRoot.querySelector("canvas");
+                        var ctx = c.getContext("2d");
+                        var div = document.createElement("div");
+                        div.setAttribute("id","Mouse_Point_Div");
+                        div.style.position = "absolute";
+                        div.style.left = "0px";
+                        div.style.top = "0px";
+                        div.style.padding = "5px";
+                        //div.style.height = "20px";
+                        div.style.backgroundColor = "white";
+                        div.style.border = "thin";
+                        div.style.borderColor = "black";
+                        div.style.borderStyle = "solid";
+                        div.style.boxShadow = "4px 4px 2px -2px rgba(0,0,0,0.9)";
+                        //div.style.outline = "solid";
+                        //div.style.outlineColor = "black"
+                        div.style.color = "black";
+                        this.shadowRoot.appendChild(div);
+                    } else {
+                        var div = this.shadowRoot.querySelector("#Mouse_Point_Div");
+                        div.style.display = "block";
+                        div.innerHTML = "Title: " + this.names[i] + "<br>" + "Value: " + this.vals[i];
+                        div.style.left = mouse_x + 'px';
+                        div.style.top = mouse_y + 'px';
+                        //console.log("Divider Position:", div.style.left);
+                    }
+                    //console.log(mouse_x + 'px');
+                    //div.style.left = mouse_x + 'px';
+                    //div.style.right = mouse_y + 'px';
+                    //console.log(this.names[i]);
+                }
+            }
+            //console.log(this.names[this.arcs.indexOf(closest)]);
+        } else {
+            if (this.shadowRoot.querySelector("#Mouse_Point_Div"))
+            {
+                var div = this.shadowRoot.querySelector("#Mouse_Point_Div");
+                div.style.display = "none"
+            }
+        }
+    }
+    mouseOver = function(e){
+        this.mouse_track = true;
+    }
+    mouseLeave = function(e) {
+        this.mouse_track = false;
+    }
+    connectedCallback() {
+        var shadow = this.attachShadow({mode: 'open'});
+        var c = document.createElement('canvas');
+        shadow.appendChild(c);
+        this.drawChart();
+        //this.resize();
+        this.addEventListener("mouseover",this.mouseOver);
+        this.addEventListener("mouseleave",this.mouseLeave);
+        this.addEventListener("mousemove",this.getPos);
+        this.mouse_track = false;
+    }
 }
 
 //var pchart_element = Object.create(HTMLElement.prototype);
 window.customElements.define('pchart-element',PChartElement);
 window.customElements.define('pie-chart',PChart);
+
