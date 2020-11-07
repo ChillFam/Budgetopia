@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    background-color: rgb(200, 200, 200);
 }
 /* .bod {
     height: 90%;
@@ -29,16 +30,18 @@ html, body {
 
 footer {
     /* margin: 0;
-    padding: 0;
-    height: 6%; */
+    padding: 0;*/
+    height: 4%; 
     width: 100%;
-    /* position: fixed;
-    left: 0;
+    bottom: 0;
+    position: fixed;
+    /* left: 0;
     bottom: 0; */
 }
 nav {
     /* margin: 0;
     padding: 0; */
+    height: 4%; 
     width: 100%;
     /* position: fixed;
     left: 0;
@@ -66,5 +69,6 @@ a:link, a:visited {
     text-transform: uppercase;
 }
 a:hover, a:active {
-    background-color:rgba(17, 52, 87, 0.5) !important;
+    background-color:rgba(17, 52, 87, 0.5);
+    color: white;
 }
