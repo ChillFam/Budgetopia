@@ -1,0 +1,261 @@
+<!doctype html>
+
+<html lang="en-US" style="overflow: scroll">
+<!-- Header -->
+
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120378562-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-120378562-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LootStreak</title>
+    <link rel="icon" href=LOGO2.png>
+    <link href="CSSdata.css" rel="stylesheet" type="text/css">
+    <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container" style="width: 100%; height = 100%; padding-left: 0px; padding-right: 0px; background-image: url(account_background.png)">
+        <header>
+            <a href="">
+                <p style="float: left; padding-left: 25px; padding-top: 7px"><img src="LOGO2.png" height="35" width="35" border="1px"></p>
+                <h4 class="logo">LOOTSTREAK</h4>
+            </a>
+
+           <div class="dropdown" id="dropdown">
+                <p id="nametag" style="margin-left: -100px; margin-right: 50px; width: 200px; height: 40px;  color: white; font-weight: bold">Placeholder</p>
+                <script>
+                    document.getElementById('nametag').innerHTML = localStorage.getItem('login');
+                </script>
+                <div style="margin-left: -100px; margin-right: 100px" class="dropdown-content">
+                    <a href="#">Deposit</a>
+                    <a href="https://www.lootstreak.com/accountInformation">Account Information</a>
+                    <a href="https://www.lootstreak.com" onclick="logOut()">Log Out</a>
+                </div>
+            </div>
+
+        </header>
+
+    <div style="text-align: center; position: relative">
+        <img src="account_page.png" width="1180px" height="905px" style="position: absolute; margin-left: -540px; margin-top: 13px">
+        <p style="text-align: left; position: absolute; left: 9%; right: 60%; top: 28px; bottom: 50%; color: white; font-size: 26pt">
+            MY ACCOUNT
+        </p>
+        <p style="text-align: left; position: absolute; left: 5.5%; right: 60%; top: 105px; bottom: 50%; color: white; font-size: 10pt">
+            Account Information
+        </p>
+        
+        <p style="text-align: left; position: absolute; left: 5.5%; right: 60%; top: 129px; bottom: 50%; color: white; font-size: 10pt">
+            Deposit
+        </p>
+        <p style="text-align: left; position: absolute; left: 5.5%; right: 60%; top: 153px; bottom: 50%; color: white; font-size: 10pt">
+            Withdraw
+        </p>
+        <p style="text-align: left; position: absolute; left: 5.5%; right: 60%; top: 177px; bottom: 50%; color: white; font-size: 10pt">
+            Transaction History
+        </p>
+        
+        <img src="account_info_top_bar.png" width="944px" height="136px" style="position: absolute; left: 265px; right: 10%; top: 115px; bottom: 50%">
+        
+       
+        
+        <img src="account_logo.png" width="84px" height="82px" style="position: absolute; left: 23.5%; right: 10%; top: 140px; bottom: 50%">
+        
+        <p style="text-align: left; position: absolute; left: 5.5%; right: 60%; top: 177px; bottom: 50%; color: white; font-size: 10pt">
+            Transaction History
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 33%; right: 60%; top: 133px; bottom: 50%; color: white; font-size: 20pt" id="gatag">
+            Placeholder
+        </p>
+        
+       
+        
+        
+        
+         <script>
+                    document.getElementById('gatag').innerHTML = localStorage.getItem('gametag');
+                </script>
+        
+         <button style=" text-align: center; position: absolute; left: 33%; right: 35%; top: 190px; bottom: 50%; background-color: #4CAF50; color: black;  width: 105px; height: 28px; border-radius: 25px"><p style="margin-bottom: -1px">Upload Photo</p></button>
+        
+        <p style=" text-align: center; position: absolute; left: 14.8%; right: 35%; top: 223px; bottom: 50%; color: white; font-size: 9pt">
+            Supported Formats: JPG, PNG
+        </p>
+        
+        <p style="text-align: left; position: absolute; left: 70%; right: 10% top: 133px; bottom: 754px; color: white; font-size: 12pt">
+            Monthly CP Earned
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 270px; right: 40%; top: 265px; bottom: 500px; color: white; font-size: 16pt">
+            Account Details
+        </p>
+        
+            
+        <img src="account_info_top_bar.png" width="944px" height="136px" style="position: absolute; left: 265px; right: 10px; top: 300px; bottom: 500px">
+        
+         <img src="grey_divider.png" width="944px" height="1px" style="position: absolute; 200px; left: 265px; right: 10px; top: 368px; bottom: 500px">
+        
+        <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 305px; bottom: 300px; color: white; font-size: 9pt">
+            Balance
+        </p>
+        
+        <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 330px; bottom: 300px; color: white; font-size: 11pt">
+            $
+        </p>
+        
+       
+        
+        <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 375px; bottom: 300px; color: white; font-size: 9pt">
+            Confidence Points (CP)
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 270px; right: 40%; top: 450px; bottom: 300px; color: white; font-size: 16pt">
+            Edit Your Personal Details
+        </p>
+        
+      
+        <button style=" text-align: center; position: absolute; left: 915px; top: 320px; background-color: #4CAF50; color: black;  width: 105px; height: 28px; border-radius: 25px"><p style="margin-bottom: -1px">Add Funds</p></button>
+        
+        <button style=" text-align: center; position: absolute; left: 915px; top: 387px; background-color: #4CAF50; color: black;  width: 105px; height: 28px; border-radius: 25px"><p style="margin-bottom: -1px">Redeem</p></button>
+        
+        <img src="account_info_top_bar.png" width="944px" height="240px" style="position: absolute; left: 265px; right: 10px; top: 485px; bottom: 100px">
+        
+         <img src="grey_divider.png" width="944px" height="1px" style="position: absolute; 200px; left: 265px; right: 10px; top: 548px; bottom: 100px">
+         <img src="grey_divider.png" width="944px" height="1px" style="position: absolute; 200px; left: 265px; right: 10px; top: 608px; bottom: 100px">
+         <img src="grey_divider.png" width="944px" height="1px" style="position: absolute; 200px; left: 265px; right: 10px; top: 668px; bottom: 100px">
+         <img src="grey_divider_vertical.png" width="1px" height="64px" style="position: absolute; 200px; left: 730px; right: 10px; top: 485px; bottom: 100px">
+        
+         <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 490px; bottom: 100px; color: white; font-size: 9pt">
+            First Name
+        </p>
+        
+        
+         <p style="text-align: left; position: absolute; left: 740px; right: 100px; top: 490px; bottom: 100px; color: white; font-size: 9pt">
+            Last Name
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 553px; bottom: 100px; color: white; font-size: 9pt">
+            Email Address
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 613px; bottom: 100px; color: white; font-size: 9pt">
+            Country
+        </p>
+        
+         <p style="text-align: left; position: absolute; left: 275px; right: 200px; top: 673px; bottom: 100px; color: white; font-size: 9pt">
+            City/Town
+        </p>
+        
+        <form  method="post" action="/update_information.php" onsubmit="return updateInfo(this)">
+           <input style="text-align: left; position: absolute; left: 280px; right: 500px; width: 440px; top: 513px; background-color: black; border: none; border-color: transparent; outline: none; color: white" id ="firstname"  name="firstname">
+        
+        
+        
+        <input style="text-align: left; position: absolute; left: 745px; right: 0px; width: 420px; top: 513px; background-color: black; border: none; border-color: transparent; outline: none; color: white" id = "lastname" name="lastname">
+        
+         <input style="text-align: left; position: absolute; left: 280px; right: 0px; width: 900px; top: 575px; background-color: black; border: none; border-color: transparent; outline: none; color: white" placeholder="placeholder" id="email" name="email" type="email">
+        
+          <input style="text-align: left; position: absolute; left: 280px; right: 0px; width: 900px; top: 693px; background-color: black; border: none; border-color: transparent; outline: none; color: white" id="city" name="city">
+        
+         <input type=hidden id="curremail" name="curremail">
+        
+        <button type="submit" style=" text-align: center; position: absolute; left: 915px; top: 750px; background-color: #4CAF50; color: black;  width: 200px; height: 28px; border-radius: 25px"><p style="margin-bottom: -1px">Save Account Details</p></button>
+        
+            
+        </form>
+         <a href="#" style=" text-align: center; position: absolute; left: 300px; top: 760px; text-decoration: underline; color: white; font-size: 9pt">Change Password</a>
+        <a href="#" style=" text-align: center; position: absolute; left: 450px; top: 760px; text-decoration: underline; color: white; font-size: 9pt">Change Email Notifications</a>
+        
+        <script>
+            
+                    document.getElementById('email').placeholder = localStorage.getItem('login');
+                    document.getElementById('curremail').value = localStorage.getItem('login');
+                    document.getElementById('firstname').placeholder = localStorage.getItem('firstname');
+                    document.getElementById('lastname').placeholder = localStorage.getItem('lastname');
+                    document.getElementById('city').placeholder = localStorage.getItem('city');
+        </script>
+        
+        
+        </div>
+
+    </div>
+
+</body>
+<script>
+    
+    function updateInfo(oFormElement) {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function() {
+                    var response = (xhr.responseText);
+                    
+                    
+                      var end1 = response.search(",G:");
+                    var end2 = response.search(",FN:");
+                    var end3 = response.search(",LN:");
+                    var end4 = response.search(",CO:");
+                    var end5 = response.search(",CI:");
+                    var end6 = response.search(",CP:");
+                    
+                    var twitch = response.substring(2, end1);
+                    var gatag = response.substring(end1 + 3, end2);
+                                      
+
+                    var firstname = response.substring(end2 + 4, end3);
+                      
+                    var lastname = response.substring(end3 + 4, end4);
+                    
+                    var country = response.substring(end4 + 4, end5);
+                  
+                    var city = response.substring(end5 + 4, end6);
+                    var cp = response.substring(end6 + 4, response.length);
+                    
+                                       localStorage.setItem('login', document.getElementById('email').value);
+
+                    
+                    localStorage.setItem('gametag', gatag);
+                    localStorage.setItem('twitch', twitch);
+                     localStorage.setItem('firstname', firstname);
+                     localStorage.setItem('lastname', lastname);
+                     localStorage.setItem('country', country);
+                     localStorage.setItem('city', city);
+                     localStorage.setItem('cp', cp);
+                            window.location.href = "https://www.lootstreak.com/accountInformation";
+                    
+
+                }
+                xhr.open(oFormElement.method, oFormElement.action, true);
+                xhr.send(new FormData(oFormElement));
+
+                return false;
+
+            } 
+    function logOut() {
+
+        localStorage.removeItem('login');
+
+        return false;
+
+    }
+    
+ 
+</script>
+
+</html>
