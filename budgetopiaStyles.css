@@ -34,9 +34,7 @@ html, body {
     width:50%;
     left: 500px;
     top: 30px;
-    
 }
-
 footer {
     /* margin: 0;
     padding: 0;*/
@@ -55,7 +53,6 @@ nav {
     /* position: fixed;
     left: 0;
     top: 0; */
-    
 }
 ul {
     list-style-type: none;
