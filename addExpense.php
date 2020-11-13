@@ -11,18 +11,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <!DOCTYPE html>
 <html lang="en">
-
 <!-- These are comments -->
 
 <head>
-    <title>Budgetopia Edit</title>
+    <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
 </head>
 
 <body>
     <nav class="prim-text sec-back">
-        <ul>
-            <li><a href="index.php">Budgetopia</a></li>
+        <ul>            
+			<li><a href="index.php">Budgetopia</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -30,29 +29,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			<li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
-    <div>
-        <p> 
-        Username: <?php echo htmlspecialchars($_SESSION["username"]); ?>
-        </p>
-        <p>
-            Income: *income*
-        </p>
-        <p>
-            Percentages: <!--not sure why, but the lists wont work to show the percentages-->
-        </p>
-        <p>
-            -  Needs: *needs percent*
-        </p>
-        <p>
-            -  Wants: *wants percent*
-        </p>
-        <p>
-            -  Savings: *savings percent*
-        </p>
-          
-    </div>
-    
- 
+    <form action="/action_page.php">
+        <label for="amount">Amount:</label><br>
+        <input type="text" id="amount" name="amount"><br><br>
+        <label for="category">Category:</label><br>
+        <input type="radio" id="needs" name="category">
+        <label for="needs">Needs</label><br>
+        <input type="radio" id="female" name="category">
+        <label for="wants">Wants</label><br>
+        <input type="radio" id="savings" name="category">
+        <label for="savings">Savings</label><br><br>
+        <label for="category">Label your expense:</label><br>
+        <input type="text" id="label" name="label"><br><br>
+        <input type="submit" value="Submit">
+      </form> 
+      <!DOCTYPE html>
+    <html lang="en">
+        
     <footer class="prim-text, sec-back">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
     </footer>
