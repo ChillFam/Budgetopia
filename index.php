@@ -1,3 +1,8 @@
+<?php
+// Initialize the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +17,18 @@
     <nav class="prim-text sec-back">
         <ul>
             <li><a href="index.php">Budgetopia</a></li>
+			<?php if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) : ?>
+			<li><a href="home.php">Home</a></li>
+            <li><a href="savings.php">Savings</a></li>
+            <li><a href="edit.php">Edit</a></li>
+			<li><a href="logout.php">Logout</a></li>
+			<?php else : ?>
 			<li><a href="login.php">Login</a></li>
 			<li><a href="register.php">Register</a></li>
+			<?php endif; ?>
+			
+			
+			
         </ul>
     </nav>
 	
@@ -25,3 +40,4 @@
 
 </body>
 </html>
+ 

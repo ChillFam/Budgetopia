@@ -31,7 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </nav>
     <div>
         <p>
-            Name: *user name*
+            Username: <?php echo htmlspecialchars($_SESSION["username"]); ?>
         </p>
         <p>
             Income: *income*

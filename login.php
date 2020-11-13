@@ -100,6 +100,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
+	<nav class="prim-text sec-back">
+        <ul>
+            <li><a href="index.php">Budgetopia</a></li>
+			<li><a href="register.php">Register</a></li>
+        </ul>
+    </nav>
     <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
