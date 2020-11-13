@@ -27,6 +27,15 @@ html, body {
 .acc-text {
     color: lightslategray;
 }
+#main-content {
+    position: fixed;
+    display:block;
+    height:50%;
+    width:50%;
+    left: 500px;
+    top: 30px;
+    
+}
 
 footer {
     /* margin: 0;
