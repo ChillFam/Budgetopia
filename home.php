@@ -21,12 +21,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
     <nav class="prim-text sec-back">
-        <ul><li><a href="index.php">Budgetopia</a></li>
+        <ul>
+            <li><a href="index.php">Budgetopia</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
             <li><a href="addExpense.html">Add Expense</a></li>
-			<li><a href="logout.php">Logout</a></li>
+			      <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
     <div id="main-content">
@@ -70,8 +71,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </p>
         <p> ----------- </p>
     </div>
+    <p>API for graph in the middle/side (formatting will change based on graph)</p>
     <button type="button" onclick="alert('Hello world!')">Input more </button>
-
     <!-- 
     Notes:
     make header bigger,
@@ -80,7 +81,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     DOM for variables, 
     connect graph
     -->
-
     <footer class="prim-text, sec-back">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
     </footer>
