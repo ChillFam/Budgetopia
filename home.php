@@ -62,7 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </p>
         <p> ----------- </p>
     </div>
-    <div class=>
+    <div class="savings">
         <p>
             Savings: *savings percent*
         </p>
