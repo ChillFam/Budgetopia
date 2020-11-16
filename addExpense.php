@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 	
         <label for="amount">Amount:</label><br>
-        <input type="text" id="amount" name="amount"><br><br>
+        <input type="number" id="amount" name="amount"><br><br>
 		
         <label for="category">Category:</label><br>
         <input type="radio" id="needs" name="category" value="needs">
@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="radio" id="wants" name="category" value="wants">
         <label for="wants">Wants</label><br><br>
 		
-        <label for="category">Label your expense:</label><br>
+        <label for="label">Label your expense:</label><br>
         <input type="text" id="label" name="label"><br><br>
         <input type="submit" value="Submit">
     </form> 
