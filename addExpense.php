@@ -32,9 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if(empty(trim($_POST["category"]))){
 		$category_err = "Please select a category";
     }
-	elseif(trim($_POST["category"]) != "need" || trim($_POST["category"]) != "want") {
+	/*
+	elseif(trim($_POST["category"]) != "needs" || trim($_POST["category"]) != "wants") {
 		$category_err = "Invalid category";
 	}
+	*/
 	else {
 		$category = trim($_POST["category"]);
 	}
@@ -101,9 +103,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="text" id="amount" name="amount"><br><br>
 		
         <label for="category">Category:</label><br>
-        <input type="radio" id="needs" name="category" value="need">
+        <input type="radio" id="needs" name="category" value="needs">
         <label for="needs">Needs</label><br>
-        <input type="radio" id="wants" name="category" value="want">
+        <input type="radio" id="wants" name="category" value="wants">
         <label for="wants">Wants</label><br><br>
 		
         <label for="category">Label your expense:</label><br>
