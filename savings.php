@@ -47,6 +47,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             *API for line graph showing progress*
         </p>
     </div>
+    <!-- I put this here, but we can move it to a different page if you think it will look better. -->
     <p>New savings goal(this will replace your previous goal)</p><br>
     <form action=>
 
