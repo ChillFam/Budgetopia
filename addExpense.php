@@ -23,7 +23,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $amount_err = "Please enter an amount";
     } 
 	elseif(!is_numeric(trim($_POST["amount"]))){
-		 $amount_err = "Only decimal values allowed";
+		$amount_err = "Only decimal values allowed";
+	}
+	elseif(trim($_POST["amount"]) <= 0){
+		$amount_err = "Amount must be greater than $0";
 	}
 	else{
 		$amount = round(trim($_POST["amount"]), 2);
@@ -117,8 +120,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			</select>
 		</div><br>
 		
-		<label for="amount">Amount:</label><br>
-        <input type="number" id="amount" name="amount" required><br><br>
+		<label for="amount">Amount ($):</label><br>
+        <input type="number" id="amount" name="amount" min="1" required><br>
+		<?php 
+			if(!empty($amount_err)) {
+				echo <<<GFG
+					<p><b>Error: $amount_err</b></p>
+				GFG;
+			}
+		?>
         <input type="submit" value="Submit">
     </form> 
         
