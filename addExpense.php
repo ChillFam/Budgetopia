@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-				echo '<script>alert("Expense added successfully!")</script>'; 
+				header("location: expenses.php");
             } 
 			else{
                 echo "SQL Error: ". mysqli_error($link);
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 	}
 	else {
-		echo $amount_err . "\n" . $label_err . "\n" . $category_err . "\n" . $frequency_err;
+		#echo $amount_err . "\n" . $label_err . "\n" . $category_err . "\n" . $frequency_err;
 	}
 	
 	// Close connection
@@ -98,12 +98,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </ul>
     </nav>
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-	
-        <label for="amount">Amount:</label><br>
-        <input type="number" id="amount" name="amount"><br><br>
+        <label for="category">Label your expense:</label><br>
+        <input type="text" id="label" name="label" required><br><br>
 		
         <label for="category">Category:</label><br>
-        <input type="radio" id="needs" name="category" value="needs">
+        <input type="radio" id="needs" name="category" value="needs" required>
         <label for="needs">Needs</label><br>
         <input type="radio" id="wants" name="category" value="wants">
         <label for="wants">Wants</label><br><br>
@@ -118,8 +117,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			</select>
 		</div><br>
 		
-        <label for="category">Label your expense:</label><br>
-        <input type="text" id="label" name="label"><br><br>
+		<label for="amount">Amount:</label><br>
+        <input type="number" id="amount" name="amount" required><br><br>
         <input type="submit" value="Submit">
     </form> 
         

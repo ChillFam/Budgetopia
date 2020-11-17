@@ -49,7 +49,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <!-- I put this here, but we can move it to a different page if you think it will look better. -->
     <p>New savings goal(this will replace your previous goal)</p><br>
-    <form action=>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
         <label for="saving">Amount:</label><br>
         <input type="number" id="saving" name="saving" min="0" required><br><br>

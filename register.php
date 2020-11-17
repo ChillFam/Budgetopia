@@ -161,34 +161,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
+                <label>Username</label><br>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>" required>
+				<?php 
+					if(!empty($username_err)) {
+						echo '<p><b>Error: Username is already taken</b></p>';
+					}
+				?>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <label>Password</label><br>
+                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" required>
+				<?php 
+					if(!empty($password_err)) {
+						echo '<p><b>Error: Password must contain atleast 6 characters</b></p>';
+					}
+				?>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                <label>Confirm Password</label><br>
+                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
+				<?php 
+					if(!empty($confirm_password_err)) {
+						echo '<p><b>Error: Passwords did not match</b></p>';
+					}
+				?>
             </div>
 			<div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                <label>First Name</label>
-                <input type="text" name="first_name" class="form-control" value="<?php echo $first_name; ?>">
-                <span class="help-block"><?php echo $name_err; ?></span>
+                <label>First Name</label><br>
+                <input type="text" name="first_name" class="form-control" value="<?php echo $first_name; ?>" required>
             </div>
 			<div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                <label>Last Name</label>
-                <input type="text" name="last_name" class="form-control" value="<?php echo $last_name; ?>">
-                <span class="help-block"><?php echo $name_err; ?></span>
+                <label>Last Name</label><br>
+                <input type="text" name="last_name" class="form-control" value="<?php echo $last_name; ?>" required>
+				<?php 
+					if(!empty($name_err)) {
+						echo '<p><b>Error: Invalid characters in first or last name</b></p>';
+					}
+				?>
             </div>
 			<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <label>Email</label>
-                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
-                <span class="help-block"><?php echo $email_err; ?></span>
+                <label>Email</label><br>
+                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
+				<?php 
+					if(!empty($email_err)) {
+						echo '<p><b>Error: Invalid email</b></p>';
+					}
+				?>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
