@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -12,8 +12,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "config.php";
 
 $userID = $_SESSION["userID"];
-$amount_err = $label_err = $category_err = "";
-$amount = $label = $category = "";
+$amount_err = $label_err = $category_err = $frequency_err = "";
+$amount = $label = $category = $frequency = "";
 
 
 // Processing form data when form is submitted
@@ -48,16 +48,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$label = trim($_POST["label"]);
 	}
 	
-	if(empty($amount_err) && empty($label_err) && empty($category_err)) {
-		$sql = "INSERT INTO expenses (userID, amount, category, details) VALUES (?, ?, ?, ?)";
+	if(empty($amount_err) && empty($label_err) && empty($category_err) && empty($frequency_err)) {
+		$sql = "INSERT INTO expenses (userID, amount, category, details, frequency, dateAdded) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "iiss", $userID, $amount, $category, $label);
+            mysqli_stmt_bind_param($stmt, "iissss", $userID, $amount, $category, $label, $_POST["frequency"], date("Y-m-d"));
 			
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                echo "Expense added successfully!";
+				echo '<script>alert("Expense added successfully!")</script>'; 
             } 
 			else{
                 echo "SQL Error: ". mysqli_error($link);
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 	}
 	else {
-		echo $amount_err . "\n" . $label_err . "\n" . $category_err;
+		echo $amount_err . "\n" . $label_err . "\n" . $category_err . "\n" . $frequency_err;
 	}
 	
 	// Close connection
@@ -108,7 +108,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="radio" id="wants" name="category" value="wants">
         <label for="wants">Wants</label><br><br>
 		
-        <label for="label">Label your expense:</label><br>
+		<div>
+			<label for="frequency">Frequency:</label>
+			<select name="frequency" id="frequency">
+				<option value="once">One time</option>
+				<option value="daily">Daily</option>
+				<option value="weekly">Weekly</option>
+				<option value="monthly">Monthly</option>
+			</select>
+		</div><br>
+		
+        <label for="category">Label your expense:</label><br>
         <input type="text" id="label" name="label"><br><br>
         <input type="submit" value="Submit">
     </form> 

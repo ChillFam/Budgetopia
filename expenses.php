@@ -8,32 +8,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-// Prepare a select statement
-    $sql = "SELECT * FROM expenses WHERE userID = ?";
-	if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "i", $_SESSION["userID"]);
-		mysqli_stmt_store_result($stmt);
-		
-		/*
-		function display_data($data) {
-			$output = '<table>';
-			foreach($data as $key => $var) {
-				$output .= '<tr>';
-				foreach($var as $k => $v) {
-					if ($key === 0) {
-						$output .= '<td><strong>' . $k . '</strong></td>';
-					} else {
-						$output .= '<td>' . $v . '</td>';
-					}
-				}
-				$output .= '</tr>';
-			}
-			$output .= '</table>';
-			echo $output;
-		}
-		*/
+// Include config file
+require_once "config.php";
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	//echo "Delete expenseID: " . trim($_POST["delete"]);
+	if(empty(trim($_POST["delete"]))) {
+		echo '<script>alert("Please select an expense")</script>';
 	}
+	else {
+		$sql = "Delete from expenses where expenseID = ?";
+		if($stmt = mysqli_prepare($link, $sql)){
+			mysqli_stmt_bind_param($stmt, "i", trim($_POST["delete"]));
+			if(mysqli_stmt_execute($stmt)){
+				echo '<script>alert("Expense deleted successfully!")</script>'; 
+			} 
+			else{
+				echo "SQL Error: ". mysqli_error($link);
+			}
+			mysqli_stmt_close($stmt);
+		}
+	}
+	// Close connection
+    mysqli_close($link);
+	header("Refresh:0");
+	
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +57,33 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </ul>
     </nav>
 	
-	<h1><b>Show users expenses</b></h1>
-	<div class="form-group">
-		<button type="button" onclick="window.location='addExpense.php';">Add Expense</button>
-		<button type="button" onclick="alert('Hello world!')">Delete Expense</button>
-	</div>
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		<div><br>
+			<?php
+				$sql = "SELECT expenseID, details, amount, frequency, category, dateAdded FROM expenses WHERE userID = " . $_SESSION["userID"];
+				$stmt = mysqli_query($link, $sql);
+				if (mysqli_num_rows($stmt) > 0) {
+					// output data of each row
+					while($row = mysqli_fetch_assoc($stmt)) {
+						//echo $row["expenseID"];
+						$expenseID = $row["expenseID"];
+						echo <<<GFG
+							<input type="radio" id=$expenseID value=$expenseID name="delete">
+						GFG;
+						echo nl2br("Expense: " . $row["details"] . "\nAmount: $" . $row["amount"] . "\nFrequency: " . $row["frequency"] . "\nCategory: " . $row["category"] . "\nDate Added: " . $row["dateAdded"] . "\n\n");
+					}
+				} 
+				else {
+				  echo "No expenses found";
+				}
+			?>
+		</div><br>
+		
+		<div>
+			<button type="button" onclick="window.location='addExpense.php';">Add Expense</button>
+			<button type="submit"> Delete Expense</button>
+		</div>
+	</form>
  
     <footer class="prim-text, sec-back">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
