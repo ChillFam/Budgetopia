@@ -49,6 +49,47 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <p>
             -  Savings: *savings percent*
         </p>
+        <p>
+            Change your information here: (it would be really cool to be able to have these preset as the current info and they just change anything that is wrong, but I don't know how to do that rn)
+        </p>
+        <form action=>
+	
+            <label for="income">Income each pay period:</label><br>
+            <input type="number" id="income" name="income" min="0"><br><br>
+            
+            <label for="frequency">Frequency of pay period:</label><br>
+            <input type="radio" id="monthly" name="frequency">
+            <label for="monthly">Monthly</label><br>
+            <input type="radio" id="biweekly" name="frequency">
+            <label for="biweekly">Biweekly (every 2 weeks)</label><br>
+            <input type="radio" id="weekly" name="frequency">
+            <label for="weekly">Weekly</label><br><br>
+            
+            <label for="percents">These percents should add up to 100:</label><br><br>
+            <label for="Npercent">What percent of your income do you spend on necessities each month?</label><br>
+            <input type="number" id="Npercent" name="Npercent" min= "0" max="100" required><br>
+            <label for="Wpercent">What percent of your income do you spend on wants each month?</label><br>
+            <input type="number" id="Wpercent" name="Wpercent" min= "0" max="100" required><br>
+            <label for="Spercent">What percent of your income do you want to save each month?</label><br>
+            <input type="number" id="Spercent" name="Spercent" min= "0" max="100" required><br><br>
+            
+            
+            <input type="submit" value="Submit">
+        </form> <br><br>
+        <p>New savings goal(this will replace your previous goal)</p><br>
+        <form action=>
+	
+            <label for="saving">Amount:</label><br>
+            <input type="number" id="saving" name="saving" min="0" required><br><br>
+            
+            <label for="sLabel">What are you saving for?</label><br>
+            <input type="text" id="sLabel" name="sLabel" required> <br><br>
+            
+            <label for="Npercent">How much do you have saved now? (outside what is tracked on this site)</label><br>
+            <input type="number" id="Npercent" name="Npercent" min= "0" required><br><br>
+            
+            <input type="submit" value="Submit">
+        </form> 
           
     </div>
     
@@ -59,3 +100,4 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 </body>
 </html>
+

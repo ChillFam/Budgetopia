@@ -58,7 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </nav>
 	
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-		<div><br>
+		<h3>Expenses for <?php echo htmlspecialchars($_SESSION["username"]); ?>:</h3>
+		<div>
 			<?php
 				$sql = "SELECT expenseID, details, amount, frequency, category, dateAdded FROM expenses WHERE userID = " . $_SESSION["userID"];
 				$stmt = mysqli_query($link, $sql);
@@ -68,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						//echo $row["expenseID"];
 						$expenseID = $row["expenseID"];
 						echo <<<GFG
-							<input type="radio" id=$expenseID value=$expenseID name="delete">
+							<input type="radio" id=$expenseID value=$expenseID name="delete" required>
 						GFG;
 						echo nl2br("Expense: " . $row["details"] . "\nAmount: $" . $row["amount"] . "\nFrequency: " . $row["frequency"] . "\nCategory: " . $row["category"] . "\nDate Added: " . $row["dateAdded"] . "\n\n");
 					}
