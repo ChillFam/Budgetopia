@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <nav class="prim-text sec-back">
         <ul> 
-            <li><a href="index.php">Budgetopia</a></li>
+            <li>Budgetopia</li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -148,6 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<label for="details">What are you saving for?</label><br>
         <input type="text" id="details" name="details" required> <br><br>
 
+<<<<<<< Updated upstream
         <label for="savingsGoal">Savings Goal ($):</label><br>
         <input type="number" id="savingsGoal" name="savingsGoal" min="1" required><br><br>
 		<?php 
@@ -167,6 +168,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				GFG;
 			}
 		?>
+=======
+        <label for="saving">Amount:</label><br>
+        <input type="number" id="saving" name="saving" min="-1" required><br><br>
+        
+        <label for="sLabel">What are you saving for?</label><br>
+        <input type="text" id="sLabel" name="sLabel" required> <br><br>
+        
+        <label for="Npercent">How much do you have saved now? (outside what is tracked on this site)</label><br>
+        <input type="number" id="Npercent" name="Npercent" min= "-1" required><br><br>
+>>>>>>> Stashed changes
         
         <input type="submit" value="Submit">
     </form> 
