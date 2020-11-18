@@ -146,11 +146,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <p><b>New savings goal (this will replace your previous goal)</b></p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 		<label for="details">What are you saving for?</label><br>
-        <input type="text" id="details" name="details" required> <br><br>
+        <input type="text" id="details" name="details"> <br><br>
 
-<<<<<<< Updated upstream
+
         <label for="savingsGoal">Savings Goal ($):</label><br>
-        <input type="number" id="savingsGoal" name="savingsGoal" min="1" required><br><br>
+        <input type="number" id="savingsGoal" name="savingsGoal" min="0"><br><br>
 		<?php 
 			if(!empty($savingsGoal_err)) {
 				echo <<<GFG
@@ -160,7 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		?>
         
         <label for="currentSavings">Current Savings ($):</label><br>
-        <input type="number" id="currentSavings" name="currentSavings" min= "0" required><br>
+        <input type="number" id="currentSavings" name="currentSavings" min= "-1"><br>
 		<?php 
 			if(!empty($currentSavings_err)) {
 				echo <<<GFG
@@ -168,16 +168,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				GFG;
 			}
 		?>
-=======
-        <label for="saving">Amount:</label><br>
-        <input type="number" id="saving" name="saving" min="-1" required><br><br>
-        
-        <label for="sLabel">What are you saving for?</label><br>
-        <input type="text" id="sLabel" name="sLabel" required> <br><br>
-        
-        <label for="Npercent">How much do you have saved now? (outside what is tracked on this site)</label><br>
-        <input type="number" id="Npercent" name="Npercent" min= "-1" required><br><br>
->>>>>>> Stashed changes
         
         <input type="submit" value="Submit">
     </form> 
