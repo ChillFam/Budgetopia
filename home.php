@@ -39,34 +39,34 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <script src="pie-chart-js.js"></script>
     <div class="needs">
-        <p id="nPercent">
+        <p>
             Needs: *needs percent*
         </p>
-        <p id="nBudgeted">
+        <p>
             Budgeted: *needs budgeted*
         </p>
-        <p id="nRemain">
+        <p>
             Remaining: *needs remaining*
         </p>
         <p> ----------- </p>
     </div>
     <div class="wants">
-        <p id="wPercent">
+        <p>
             Wants: *wants percent*
         </p>
-        <p id="wBudgeted">
+        <p>
             Budgeted: *wants budgeted*
         </p>
-        <p id="wRemain">>
+        <p>
             Remaining: *wants remaining*
         </p>
         <p> ----------- </p>
     </div>
     <div class="savings">
-        <p id="sPercent">
+        <p>
             Savings: *savings percent*
         </p>
-        <p id="sBudgeted">
+        <p>
             Budgeted: *savings budgeted*
         </p>
         <p> ----------- </p>
