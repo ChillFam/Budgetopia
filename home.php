@@ -57,7 +57,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <p id="wBudgeted">
             Budgeted: *wants budgeted*
         </p>
-        <p id="wRemain">>
+        <p id="wRemain">
             Remaining: *wants remaining*
         </p>
         <p> ----------- </p>
