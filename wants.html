@@ -22,7 +22,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><b>Budgetopia</b></li>
+            <li>Budgetopia</li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -38,18 +38,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </pie-chart>
     </div>
     <script src="pie-chart-js.js"></script>
-    <div class="needs">
-        <p id="nPercent">
-            Needs: *needs percent*
-        </p>
-        <p id="nBudgeted">
-            Budgeted: *needs budgeted*
-        </p>
-        <p id="nRemain">
-            Remaining: *needs remaining*
-        </p>
-        <p> ----------- </p>
-    </div>
     <div class="wants">
         <p id="wPercent">
             Wants: *wants percent*
@@ -60,14 +48,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <p id="wRemain">
             Remaining: *wants remaining*
         </p>
-        <p> ----------- </p>
-    </div>
-    <div class="savings">
-        <p id="sPercent">
-            Savings: *savings percent*
-        </p>
-        <p id="sBudgeted">
-            Budgeted: *savings budgeted*
+        <p id="wExpenses">
+            Expenses: *list wants expenses*
         </p>
         <p> ----------- </p>
     </div>

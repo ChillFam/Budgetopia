@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <nav class="prim-text sec-back">
         <ul> 
-            <li><a href="index.php">Budgetopia</a></li>
+            <li><b>Budgetopia</b></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -146,10 +146,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <p><b>New savings goal (this will replace your previous goal)</b></p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 		<label for="details">What are you saving for?</label><br>
-        <input type="text" id="details" name="details" required> <br><br>
+        <input type="text" id="details" name="details"> <br><br>
+
 
         <label for="savingsGoal">Savings Goal ($):</label><br>
-        <input type="number" id="savingsGoal" name="savingsGoal" min="1" required><br><br>
+        <input type="number" id="savingsGoal" name="savingsGoal" min="0"><br><br>
 		<?php 
 			if(!empty($savingsGoal_err)) {
 				echo <<<GFG
@@ -159,7 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		?>
         
         <label for="currentSavings">Current Savings ($):</label><br>
-        <input type="number" id="currentSavings" name="currentSavings" min= "0" required><br>
+        <input type="number" id="currentSavings" name="currentSavings" min= "-1"><br>
 		<?php 
 			if(!empty($currentSavings_err)) {
 				echo <<<GFG

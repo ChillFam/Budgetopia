@@ -15,17 +15,11 @@ html, body {
 .sec-back {
     background-color: #7CAD6B;
 }
-.acc-back{
-    background-color: midnightblue;
-}
 .prim-text {
     color: black;
 }
 .sec-text {
     color: white;
-}
-.acc-text {
-    color: lightslategray;
 }
 #main-content {
     position: fixed;
