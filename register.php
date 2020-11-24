@@ -152,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 	<nav class="prim-text sec-back">
         <ul>
-            <li><a href="index.php">Budgetopia</a></li>
+            <li><b>Budgetopia</b></li>
 			<li><a href="login.php">Login</a></li>
         </ul>
     </nav>

@@ -17,13 +17,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
-    <script src="DOM.js"></script>
 </head>
 
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><a href="home.php">Budgetopia</a></li>
+            <li>Budgetopia</li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -40,16 +39,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <script src="pie-chart-js.js"></script>
     <div class="wants">
-        <p id="wPPercent">
+        <p id="wPercent">
             Wants: *wants percent*
         </p>
-        <p id="wPBudgeted">
+        <p id="wBudgeted">
             Budgeted: *wants budgeted*
         </p>
-        <p id="wPRemain">
+        <p id="wRemain">
             Remaining: *wants remaining*
         </p>
-        <p id="wPExpenses">
+        <p id="wExpenses">
             Expenses: *list wants expenses*
         </p>
         <p> ----------- </p>

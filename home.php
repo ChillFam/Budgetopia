@@ -17,13 +17,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
-    <script src="DOM.js"></script>
 </head>
 
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><a href="home.php">Budgetopia</a></li>
+            <li><b>Budgetopia</b></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -33,9 +32,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </nav>
     <div id="main-content">
         <pie-chart id="pieChart">
-            <pchart-element id="pSavings" name="Savings" value="30" colour="#00A676">
-            <pchart-element id="pWants" name="Wants" value="20" colour="#373F51">
-            <pchart-element id="pNeeds" name="Needs" value="50" colour="#008DD5">
+            <pchart-element name="Savings" value="30" colour="#00A676">
+            <pchart-element name="Wants" value="20" colour="#373F51">
+            <pchart-element name="Needs" value="50" colour="#008DD5">
         </pie-chart>
     </div>
     <script src="pie-chart-js.js"></script>
@@ -72,6 +71,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </p>
         <p> ----------- </p>
     </div>
+    <p>API for graph in the middle/side (formatting will change based on graph)</p>
+    <button type="button" onclick="alert('Hello world!')">Input more </button>
     <!-- 
     Notes:
     make header bigger,
