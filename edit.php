@@ -186,6 +186,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<?php 
 				echo <<<GFG
 					<label for="income">Income each pay period:</label><br>
+					<label>$</label>
 					<input type="number" id="income" name="income" min="0" value=$currentIncome required><br>
 				GFG;
 				
@@ -240,11 +241,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				echo <<<GFG
 					<label for="percents">These percents should add up to 100:</label><br><br>
 					<label for="Npercent">What percent of your income do you spend on necessities each month?</label><br>
-					<input type="number" id="Npercent" name="Npercent" min= "0" max="100" step="1" value=$currentNpercent required><br>
+					<input type="number" id="Npercent" name="Npercent" min= "0" max="100" step="1" value=$currentNpercent required>
+					<label>%</label<br><br>
 					<label for="Wpercent">What percent of your income do you spend on wants each month?</label><br>
-					<input type="number" id="Wpercent" name="Wpercent" min= "0" max="100" step="1" value=$currentWpercent required><br>
+					<input type="number" id="Wpercent" name="Wpercent" min= "0" max="100" step="1" value=$currentWpercent required>
+					<label>%</label<br><br>
 					<label for="Spercent">What percent of your income do you want to save each month?</label><br>
-					<input type="number" id="Spercent" name="Spercent" min= "0" max="100" step="1" value=$currentSpercent required><br>
+					<input type="number" id="Spercent" name="Spercent" min= "0" max="100" step="1" value=$currentSpercent required>
+					<label>%</label<br><br>
 				GFG;
 				if(!empty($percent_err)) {
 					echo <<<GFG
