@@ -9,17 +9,11 @@ html, body {
     height: 90%;
     margin-bottom: 10%;
 } */
-.prim-back {
-    background-color: rgb(124, 120, 120);
-}
 .sec-back {
     background-color: #7CAD6B;
 }
 .prim-text {
     color: black;
-}
-.sec-text {
-    color: white;
 }
 #main-content {
     position: fixed;
