@@ -17,6 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <title>Budgetopia Edit</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+    <script src="DOM.js"></script>
 </head>
 
 <body>
@@ -76,20 +77,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             
             <input type="submit" value="Submit">
         </form> <br><br>
-        <p>New savings goal(this will replace your previous goal)</p><br>
-        <form action=>
-	
-            <label for="saving">Amount:</label><br>
-            <input type="number" id="saving" name="saving" min="0" required><br><br>
-            
-            <label for="sLabel">What are you saving for?</label><br>
-            <input type="text" id="sLabel" name="sLabel" required> <br><br>
-            
-            <label for="Npercent">How much do you have saved now? (outside what is tracked on this site)</label><br>
-            <input type="number" id="Npercent" name="Npercent" min= "0" required><br><br>
-            
-            <input type="submit" value="Submit">
-        </form> 
           
     </div>
     
