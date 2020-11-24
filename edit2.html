@@ -11,7 +11,7 @@
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><a href="index.php">Budgetopia</a></li>
+            <li><a href="home.php">Budgetopia</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -46,7 +46,7 @@
             <label for="income">Income each pay period:</label><br>
             <input type="number" id="income" name="income" min="0"><br><br>
             
-            <label for="frequency">Frequency of pay period:</label><br>
+            <label for="frequency" value="monthly">Frequency of pay period:</label><br>
             <input type="radio" id="monthly" name="frequency" value="monthly">
             <label for="monthly">Monthly</label><br>
             <input type="radio" id="biweekly" name="frequency" value="monthly">
@@ -65,20 +65,7 @@
             
             <input type="submit" value="Submit">
         </form> <br><br>
-        <p>New savings goal(this will replace your previous goal)</p><br>
-        <form action=>
-	
-            <label for="saving">Amount:</label><br>
-            <input type="number" id="saving" name="saving" min="0" required><br><br>
-            
-            <label for="sLabel">What are you saving for?</label><br>
-            <input type="text" id="sLabel" name="sLabel" required> <br><br>
-            
-            <label for="Npercent">How much do you have saved now? (outside what is tracked on this site)</label><br>
-            <input type="number" id="Npercent" name="Npercent" min= "0" required><br><br>
-            
-            <input type="submit" value="Submit">
-        </form> 
+        
           
     </div>
     
