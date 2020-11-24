@@ -17,6 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+    <script src="DOM.js"></script>
 </head>
 
 <body>
@@ -32,9 +33,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </nav>
     <div id="main-content">
         <pie-chart id="pieChart">
-            <pchart-element name="Savings" value="30" colour="#00A676">
-            <pchart-element name="Wants" value="20" colour="#373F51">
-            <pchart-element name="Needs" value="50" colour="#008DD5">
+            <pchart-element id="pSavings" name="Savings" value="30" colour="#00A676">
+            <pchart-element id="pWants" name="Wants" value="20" colour="#373F51">
+            <pchart-element id="pNeeds" name="Needs" value="50" colour="#008DD5">
         </pie-chart>
     </div>
     <script src="pie-chart-js.js"></script>
