@@ -23,7 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li>Budgetopia</li>
+            <li><a href="home.php">Budgetopia</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -72,8 +72,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </p>
         <p> ----------- </p>
     </div>
-    <p>API for graph in the middle/side (formatting will change based on graph)</p>
-    <button type="button" onclick="alert('Hello world!')">Input more </button>
     <!-- 
     Notes:
     make header bigger,
