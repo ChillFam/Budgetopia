@@ -32,3 +32,15 @@ function edit() {
     //frequency
     document.getElementById("pNeeds").value = "*needs percent*";
 }
+function wants() {
+    //wants page
+    document.getElementById("wPPercent").innerHTML = 
+    "Wants: " + "*wants percent*" + "%";
+    document.getElementById("wPBudgeted").innerHTML = 
+    "Budgeted: $" + "*wants budgeted*";
+    document.getElementById("wPRemain").innerHTML = 
+    "Remaining: $" + "*wants remaining (budgeted-expenses)*";
+    document.getElementById("wPExpenses").innerHTML = 
+    "Spent: $" + "*wants remaining (budgeted-expenses)*";
+
+}
