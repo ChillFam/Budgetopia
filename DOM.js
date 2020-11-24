@@ -18,4 +18,17 @@ function home() {
     "Remaining: $" + "*needs remaining (budgeted-expenses)*";
     document.getElementById("wRemain").innerHTML = 
     "Remaining: $" + "*wants remaining (budgeted-expenses)*";
+    //pie chart
+    document.getElementById("pSavings").value = "*savings percent*";
+    document.getElementById("pWants").value = "*wants percent*";
+    document.getElementById("pNeeds").value = "*needs percent*";
+}
+function edit() {
+    //form
+    //percent values
+    document.getElementById("Npercent").value = "*needs percent*";
+    document.getElementById("Wpercent").value = "*wants percent*";
+    document.getElementById("Spercent").value = "*savings percent*";
+    //frequency
+    document.getElementById("pNeeds").value = "*needs percent*";
 }
