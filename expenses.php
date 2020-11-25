@@ -21,7 +21,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if($stmt = mysqli_prepare($link, $sql)){
 			mysqli_stmt_bind_param($stmt, "i", trim($_POST["delete"]));
 			if(mysqli_stmt_execute($stmt)){
-				echo '<script>alert("Expense deleted successfully!")</script>'; 
 			} 
 			else{
 				echo "SQL Error: ". mysqli_error($link);
@@ -36,19 +35,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- These are comments -->
 
 <head>
     <title>Budgetopia Home</title>
-    <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+
+       <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       <style type="text/css">
+      body{ font: 14px sans-serif; }
+      .wrapper{ width: 350px; padding: 20px; }
+  </style>
 </head>
 
+
 <body>
-    <nav class="prim-text sec-back">
+    <nav class="prim-text sec-back top-bottom">
         <ul>
-            <li><b>Budgetopia</b></li>
+            <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -56,40 +63,71 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
-	
+<div class = "page">
+  <div class = "full">
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-		<h3>Expenses for <?php echo htmlspecialchars($_SESSION["username"]); ?>:</h3>
-		<div>
-			<?php
-				$sql = "SELECT expenseID, details, amount, frequency, category, dateAdded FROM expenses WHERE userID = " . $_SESSION["userID"];
-				$stmt = mysqli_query($link, $sql);
-				if (mysqli_num_rows($stmt) > 0) {
-					// output data of each row
-					while($row = mysqli_fetch_assoc($stmt)) {
-						//echo $row["expenseID"];
-						$expenseID = $row["expenseID"];
-						echo <<<GFG
-							<input type="radio" id=$expenseID value=$expenseID name="delete" required>
-						GFG;
-						echo nl2br("Expense: " . $row["details"] . "\nAmount: $" . $row["amount"] . "\nFrequency: " . $row["frequency"] . "\nCategory: " . $row["category"] . "\nDate Added: " . $row["dateAdded"] . "\n\n");
-					}
-				} 
-				else {
-				  echo "No expenses found";
-				}
-			?>
-		</div><br>
+		<div class = "head window-wide"><?php echo htmlspecialchars($_SESSION["username"]); ?>'s Expenses:</div>
+		<div class = "space window-wide">
+		<br>
+		<br>
 		
+		<div>
+			<table>
+				<?php
+					$sql = "SELECT expenseID, details, amount, frequency, category, dateAdded FROM expenses WHERE userID = " . $_SESSION["userID"];
+					$stmt = mysqli_query($link, $sql);
+					if (mysqli_num_rows($stmt) > 0) {
+						// output data of each row
+						echo <<<GFG
+							<tr class = "sublabel">
+								<th> </th>
+								<th>Details</th>
+								<th>Amount</th>
+								<th>Frequency</th>
+								<th>Category</th>
+								<th>Date Added</th>
+							</tr>
+								
+						GFG;
+						while($row = mysqli_fetch_assoc($stmt)) {
+							$expenseID = $row["expenseID"];
+							$details = $row["details"];
+							$amount = $row["amount"];
+							$frequency = $row["frequency"];
+							$category = $row["category"];
+							$dateAdded = $row["dateAdded"];
+							echo <<<GFG
+								<tr>
+									<td><input type="radio" id=$expenseID value=$expenseID name="delete" required></td>
+									<td>$details</td>
+									<td>$$amount</td>
+									<td>$frequency</td>
+									<td>$category</td>
+									<td>$dateAdded</td>		
+								</tr>
+							GFG;
+						}
+					} 
+					else {
+					  echo "<label>No expenses found</label>";
+					}
+				?>
+			</table>
+		</div><br>
+
 		<div>
 			<button type="button" onclick="window.location='addExpense.php';">Add Expense</button>
 			<button type="submit"> Delete Expense</button>
 		</div>
 	</form>
- 
-    <footer class="prim-text, sec-back">
+</div>
+</div>
+</div>
+    <footer class="prim-text, sec-back top-bottom">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
     </footer>
 
 </body>
 </html>
+
  
