@@ -87,7 +87,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,5 +130,85 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Don't have an account? <a href="register.php">Sign up now</a></p>
         </form>
     </div>    
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Login</title>
+
+   <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+ <nav class="prim-text sec-back top-bottom">
+       <ul>
+            <li><h2>Budgetopia</h2></li>
+     <li><a href="register.php">Register</a></li>
+       </ul>
+   </nav>
+   <div class = "page">
+     <div class = "full">
+       <div class = "head  window-small">
+         Login
+       </div>
+       <div class = "space window-small">
+         <div class = "lower-border">
+           <br>
+       <p class = "sublabel">Please fill in your credentials to login.</p>
+     </div>
+     <div class = "lower-border">
+
+       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+           <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Username</label><br>
+               <div class = "textbox">
+               <input type="text" name="username" class="form-control" required>
+             </div>
+           </div>
+           <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Password</label><br>
+               <div class = "textbox">
+               <input type="password" name="password" class="form-control" required>
+             </div>
+           </div>
+
+           <div class="form-group">
+               <input type="submit" class="btn btn-primary" value="Login">
+           </div>
+			<?php 
+				if(!empty($password_err) || !empty($username_err)) {
+					echo '<p><b>Error: Invalid username or password</b></p>';
+				}
+			?>
+         </div>
+
+           <div class = "sublabel2">
+             <br>
+             Don't have an account?
+             <br>
+             <div style = "padding-top: 10px;">
+            <a class = "sub" href="register.php">
+              Sign up now
+            </a>
+          </div>
+          </div>
+       </form>
+     </div>
+   </div>
+</div>
+   <footer class="prim-text, sec-back top-bottom">
+      <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" int></script>
+
 </body>
 </html>

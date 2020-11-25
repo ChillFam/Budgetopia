@@ -80,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- These are comments -->
@@ -87,12 +88,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
-</head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+</head>
 <body>
-    <nav class="prim-text sec-back">
-        <ul>            
-            <li><b>Budgetopia</b></li>
+    <nav class="prim-text sec-back top-bottom">
+        <ul>
+            <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -100,28 +102,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
+    <div class = "page">
+    <div class="full">
+  <div class = "head content window-small">
+    Add Expense
+    </div>
+    <div class="space window-small">
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="category">Label your expense:</label><br>
-        <input type="text" id="label" name="label" required><br><br>
-		
-        <label for="category">Category:</label><br>
+        <div class="lower-border top-space">
+        <label class = "sublabel" for="category">Label:</label><br>
+        <input class = "textbox" type="text" id="label" name="label" required>
+        </div>
+        <div class="lower-border">
+        		<label class = "sublabel" for="amount">Amount ($):</label><br>
+                <input class = "textbox" type="number" id="amount" name="amount" min="1" required>
+        </div>
+        <div class = "lower-border">
+          <label class = "sublabel" for="frequency">Frequency:</label>&nbsp;
+          <select name="frequency" id="frequency">
+            <option value="once">One time</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+        <div class="lower-border">
+        <label class = "sublabel" for="category">Type:</label><br>
+        <div class="list">
         <input type="radio" id="needs" name="category" value="needs" required>
         <label for="needs">Needs</label><br>
         <input type="radio" id="wants" name="category" value="wants">
-        <label for="wants">Wants</label><br><br>
-		
-		<div>
-			<label for="frequency">Frequency:</label>
-			<select name="frequency" id="frequency">
-				<option value="once">One time</option>
-				<option value="daily">Daily</option>
-				<option value="weekly">Weekly</option>
-				<option value="monthly">Monthly</option>
-			</select>
-		</div><br>
-		
-		<label for="amount">Amount ($):</label><br>
-        <input type="number" id="amount" name="amount" min="1" required><br>
+        <label for="wants">Wants</label>
+        </div>
+        </div>
 		<?php 
 			if(!empty($amount_err)) {
 				echo <<<GFG
@@ -129,12 +142,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				GFG;
 			}
 		?>
-        <input type="submit" value="Submit">
-    </form> 
-        
-    <footer class="prim-text, sec-back">
+        <input class = "sub" type="submit" value="Add Expense">
+    </form>
+  </div>
+      </div>
+      </div>
+    <footer class="prim-text, sec-back top-bottom">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
     </footer>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" int></script>
 </body>
 </html>
+

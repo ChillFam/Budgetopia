@@ -73,6 +73,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <p>API for graph in the middle/side (formatting will change based on graph)</p>
     <button type="button" onclick="alert('Hello world!')">Input more </button>
+	<button type="button" onclick="window.location = 'changePassword.php';">Change Password </button>
     <!-- 
     Notes:
     make header bigger,

@@ -137,84 +137,129 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="budgetopiaStyles.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-</head>
+   <meta charset="UTF-8">
+   <title>Sign Up</title>
+   <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
 <body>
-	<nav class="prim-text sec-back">
-        <ul>
-            <li><b>Budgetopia</b></li>
+ <nav class="prim-text sec-back top-bottom">
+       <ul>
+            <li><h2>Budgetopia</h2></li>
 			<li><a href="login.php">Login</a></li>
-        </ul>
-    </nav>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label><br>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>" required>
-				<?php 
+       </ul>
+   </nav>
+   <div class = "page">
+    <div class = "full">
+      <div class = "head  window-small">
+        Sign up
+      </div>
+      <div class = "space window-small">
+        <div class = "lower-border">
+          <br>
+          <p class = "sublabel">Please fill in this form to create an account.</p>
+        </div>
+        <div class = "lower-border">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+           <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Username</label><br>
+               <div class = "textbox">
+               <input type="text" name="username" class="form-control" required>
+			   <?php 
 					if(!empty($username_err)) {
 						echo '<p><b>Error: Username is already taken</b></p>';
 					}
 				?>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label><br>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" required>
-				<?php 
+             </div>
+           </div>
+
+           <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Password</label><br>
+               <div class = "textbox">
+               <input type="password" name="password" class="form-control"  required>
+			   <?php 
 					if(!empty($password_err)) {
 						echo '<p><b>Error: Password must contain atleast 6 characters</b></p>';
 					}
 				?>
-            </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label><br>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
-				<?php 
+             </div>
+           </div>
+
+           <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Confirm Password</label><br>
+               <div class = "textbox">
+               <input type="password" name="confirm_password" class="form-control"  required>
+			   <?php 
 					if(!empty($confirm_password_err)) {
 						echo '<p><b>Error: Passwords did not match</b></p>';
 					}
 				?>
-            </div>
-			<div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                <label>First Name</label><br>
-                <input type="text" name="first_name" class="form-control" value="<?php echo $first_name; ?>" required>
-            </div>
-			<div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                <label>Last Name</label><br>
-                <input type="text" name="last_name" class="form-control" value="<?php echo $last_name; ?>" required>
-				<?php 
+             </div>
+           </div>
+
+     <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">First Name</label><br>
+              <div class = "textbox">
+               <input type="text" name="first_name" class="form-control" required>
+             </div>
+           </div>
+
+     <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Last Name</label><br>
+              <div class = "textbox">
+               <input type="text" name="last_name" class="form-control"  required>
+			   <?php 
 					if(!empty($name_err)) {
 						echo '<p><b>Error: Invalid characters in first or last name</b></p>';
 					}
 				?>
-            </div>
-			<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <label>Email</label><br>
-                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
-				<?php 
+             </div>
+           </div>
+
+     <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+               <label class = "sublabel2">Email</label><br>
+              <div class = "textbox">
+               <input type="text" name="email" class="form-control" required>
+			   <?php 
 					if(!empty($email_err)) {
 						echo '<p><b>Error: Invalid email</b></p>';
 					}
 				?>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <!-- <input type="reset" class="btn btn-default" value="Reset"> -->
-            </div>
-            <p>Already have an account? <a href="login.php">Login here</a></p>
-        </form>
-    </div>    
+             </div>
+           </div>
+           <div class="form-group" style = "padding-top:10px;">
+               <input type="submit" class="btn btn-primary" value="Submit">
+               <!-- <input type="reset" class="btn btn-default" value="Reset"> -->
+               <br>
+
+           </div>
+         </div>
+         <br>
+         <div class = "sublabel2">
+           Already have an account?
+           <br>
+           <div style = "padding-top:10px;">
+          <a class = "sub" href="login.php">
+            Login here
+          </a>
+        </div>
+        </div>
+       </form>
+     </div>
+
+     </div>
+   </div>
+   <footer class="prim-text, sec-back top-bottom">
+     <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
+ </footer>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" int></script>
+
 </body>
 </html>
