@@ -104,11 +104,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
-            <li><a href="edit.php">Edit</a></li>
+            <li><a href="income.php">Income</a></li>
 			<li><a href="expenses.php">Expenses</a></li>
 			<li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
+	
+	<div class = "page">
+    <div class = "full">
+      <div class = "head window-medium">
+		Savings Goal
+      </div>
+      <div class = "space window-medium">
+	  
 	<div>
 		<?php
 			$sql = "SELECT savingsGoal, details, currentSavings, dateAdded FROM savings WHERE userID = " . $_SESSION["userID"];
@@ -120,57 +128,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
+				
+				echo <<<GFG
+					<div class = "lower-border">
+						<br>
+						<div class = "lower-border">
+							<p class = "sublabel3">
+								Current Goal:
+							</p>
+							<p class = "sublabel5">
+								$$savingsGoal for a(n) $details
+							</p>
+						</div>
+						
+						<div class = "lower-border">
+						<p class = "sublabel3">
+							Current Savings:
+						</p>
+					    <p class = "sublabel5">
+							$$currentSavings
+					    </p>
+						</div>
+						
+						<div class = "lower-border">
+						<p class = "sublabel3">
+							Left to Save:
+						</p>
+						  <p class = "sublabel5">
+							$$leftToSave
+						  </p>
+						</div>
+									<p class = "sublabel3">
+										Savings Goal Met in:
+									</p>
+						  <p class = "sublabel5">
+							*(savings goal - savings) / savings/month* months
+						</p>
+									<p>
+										*API for line graph showing progress*
+									</p>
+
+					</div>
+				GFG;
+
 			}
 			else {
-				echo '<p> No savings data found </p>';
+				echo '<div class = "lower-border">';
+				echo '<h3> No savings data found </h3>';
+				echo '</div>';
 			}
 		?>
 	</div>
-    <div class = "page">
-    <div class = "full">
-      <div class = "head window-medium">
-        Savings Goal
-      </div>
-      <div class = "space window-medium">
-        <div class = "lower-border">
-
-
-			<br>
-        <div class = "lower-border">
-					<p class = "sublabel3">
-						Current Goal:
-					</p>
-          <p class = "sublabel5">
-            <?php echo "$$savingsGoal for a(n) $details"; ?>
-          </p>
-        </div>
-        <div class = "lower-border">
-					<p class = "sublabel3">
-						Current Savings:
-					</p>
-          <p class = "sublabel5">
-            <?php echo "$$currentSavings"; ?>
-          </p>
-        </div>
-        <div class = "lower-border">
-					<p class = "sublabel3">
-						Left to Save:
-					</p>
-          <p class = "sublabel5">
-            <?php echo "$$leftToSave"; ?>
-          </p>
-        </div>
-					<p class = "sublabel3">
-						Savings Goal Met in:
-					</p>
-          <p class = "sublabel5">
-            *(savings goal - savings) / savings/month* months
-        </p>
-					<p>
-						*API for line graph showing progress*
-					</p>
-
-	</div>
+    
 
     <p class = "sublabel3">New Savings Goal</p>
     <p class = "sublabel4">(will replace previous goal)</p>

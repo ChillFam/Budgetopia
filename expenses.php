@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
-            <li><a href="edit.php">Edit</a></li>
+            <li><a href="income.php">Income</a></li>
 			<li><a href="expenses.php">Expenses</a></li>
 			<li><a href="logout.php">Logout</a></li>
         </ul>
@@ -79,13 +79,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					if (mysqli_num_rows($stmt) > 0) {
 						// output data of each row
 						echo <<<GFG
-							<tr class = "sublabel">
+							<tr class = "sublabel5">
 								<th> </th>
-								<th>Details</th>
-								<th>Amount</th>
-								<th>Frequency</th>
-								<th>Category</th>
-								<th>Date Added</th>
+								<th><u>Details</u></th>
+								<th><u>Amount</u></th>
+								<th><u>Frequency</u></th>
+								<th><u>Category</u></th>
+								<th><u>Date Added</u></th>
 							</tr>
 								
 						GFG;
@@ -97,8 +97,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							$category = $row["category"];
 							$dateAdded = $row["dateAdded"];
 							echo <<<GFG
-								<tr>
-									<td><input type="radio" id=$expenseID value=$expenseID name="delete" required></td>
+								<tr class = "sublabel5">
+									<td><input style="border: 0px; width: 100%; height: 1em;" type="radio" id=$expenseID value=$expenseID name="delete" required></td>
 									<td>$details</td>
 									<td>$$amount</td>
 									<td>$frequency</td>

@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
-            <li><a href="edit.php">Edit</a></li>
+            <li><a href="income.php">Income</a></li>
 			<li><a href="expenses.php">Expenses</a></li>
 			<li><a href="logout.php">Logout</a></li>
         </ul>
