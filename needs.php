@@ -15,7 +15,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- These are comments -->
 
 <head>
-    <title>Budgetopia Home</title>
+    <title>Budgetopia Needs</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
     <script src="DOM.js"></script>
 </head>
@@ -23,7 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><a href="home.php">Budgetopia</a></li>
+            <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
@@ -67,6 +67,46 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             </p>
                         </div>
                     </div>
+                    <script>
+                        var x = 100;
+                        var y = 100;
+                        var width = 300;
+                        var height = 50;
+                        var goal = $needsBudgeted;      //total amount of money their trying to save
+                        var progress = $needsSpent;     //amount of money currently saved
+
+                        var canvas = document.createElement('canvas'); //Create a canvas element
+
+
+                        //Set canvas width/height
+                        canvas.style.width='100%';
+                        canvas.style.height='100%';
+                        //Set canvas drawing area width/height
+                        canvas.width = window.innerWidth;
+                        canvas.height = window.innerHeight;
+                        //Position canvas
+                        canvas.style.position='absolute';
+                        //canvas.style.left=0;
+                        //canvas.style.top=0;
+                        canvas.style.zIndex=10;
+                        canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+                        document.body.appendChild(canvas); //Append canvas to body element
+
+                        document.open();
+                        document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
+                        document.close();
+
+
+                        var context = canvas.getContext('2d');
+                        context.fillStyle = 'Silver';
+                        context.fillRect(x, y, width, height);  //draws base rectangle
+
+                        var context1 = canvas.getContext('2d');
+                        var currentGoal = progress/goal;
+                        context1.fillStyle = 'LawnGreen';
+                        context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+
+                    </script>
                 GFG;
             }
             else {
@@ -83,6 +123,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 $stmt = mysqli_query($link, $sql);
                 if (mysqli_num_rows($stmt) > 0) {
                     // output data of each row
+                    <p> Needs Expenses </p>
                     echo <<<GFG
                         <tr class = "sublabel5">
                             <th> </th>
