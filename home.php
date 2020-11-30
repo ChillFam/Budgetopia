@@ -50,7 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				$needsPercent = $row["need"];
 				$needsBudgeted =  $row["budget"];
                 $needsRemaining =  number_format($needsBudgeted - $needsSpent, 2);
-
+                //if remaining <0, overspent
 				echo <<<GFG
 					<div class = "lower-border">
 						<br>
@@ -72,7 +72,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			}
 			else {
 				echo '<div class = "lower-border">';
-				echo '<h3> No needs data found </h3>';
+				echo '<h3> No data found - Go to Income tab to get started</h3>';
 				echo '</div>';
 			}
 		?>
@@ -109,7 +109,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			}
 			else {
 				echo '<div class = "lower-border">';
-				echo '<h3> No wants data found </h3>';
+				echo '<h3> No data found </h3>';
 				echo '</div>';
 			}
 		?>
@@ -139,7 +139,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			}
 			else {
 				echo '<div class = "lower-border">';
-				echo '<h3> No savings data found </h3>';
+				echo '<h3> No data found </h3>';
 				echo '</div>';
 			}
 		?>
