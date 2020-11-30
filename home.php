@@ -26,7 +26,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <ul>
             <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
-            <li><a href="savings.php">Savings</a></li>
+            <li><a href="savings.php">Savings Goal</a></li>
             <li><a href="income.php">Income</a></li>
 			<li><a href="expenses.php">Expenses</a></li>
 			<li><a href="logout.php">Logout</a></li>
@@ -56,7 +56,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 						<br>
                         <div class="needs lower-border">
                             <p class = "sublabel3" id="nPercent">
+                                <a href="needs.php">
                                 Needs: $needsPercent %
+                                </a>
                             </p>
                             <p class = "sublabel5" id="nBudgeted">
                                 Budgeted: $$needsBudgeted
@@ -91,7 +93,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 						<br>
 						<div class="wants lower-border">
                             <p class = "sublabel3" id="wPercent">
-                                Wants: $wantsPercent %
+                                <a href="wants.php">
+                                    Wants: $wantsPercent %
+                                </a>    
                             </p>
                             <p class = "sublabel5" id="wBudgeted">
                                 Budgeted: $$wantsBudgeted
