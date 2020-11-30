@@ -128,7 +128,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
-				$timeLeft = number_format($leftToSave / $budget); //unsure if there is a budget value in this table
+				$sql = "SELECT budget FROM savings WHERE userID = " . $_SESSION["userID"];
+				$stmt = mysqli_query($link, $sql);
+				if (mysqli_num_rows($stmt) > 0) {
+					$row = mysqli_fetch_assoc($stmt);
+					$timeLeft = number_format($leftToSave / $sql); //unsure if there is a budget value in this table
+				}
 				//if current > goal congrats
 				echo <<<GFG
 					<div class = "lower-border">
