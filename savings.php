@@ -128,7 +128,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
-				
+				$timeLeft = number_format($leftToSave / $budget); //unsure if there is a budget value in this table
+				//if current > goal congrats
 				echo <<<GFG
 					<div class = "lower-border">
 						<br>
@@ -142,29 +143,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</div>
 						
 						<div class = "lower-border">
-						<p class = "sublabel3">
-							Current Savings:
-						</p>
-					    <p class = "sublabel5">
-							$$currentSavings
-					    </p>
+							<p class = "sublabel3">
+								Current Savings:
+							</p>
+					    	<p class = "sublabel5">
+								$$currentSavings
+					    	</p>
 						</div>
 						
 						<div class = "lower-border">
-						<p class = "sublabel3">
-							Left to Save:
-						</p>
-						  <p class = "sublabel5">
-							$$leftToSave
-						  </p>
+							<p class = "sublabel3">
+								Left to Save:
+							</p>
+							<p class = "sublabel5">
+								$$leftToSave
+							</p>
 						</div>
 						
 						<div>
 							<p class = "sublabel3">
 								Savings Goal Met in:
 							</p>
-							  <p class = "sublabel5">
-								*(savings goal - savings) / savings/month* months
+							<p class = "sublabel5">
+								$timeLeft months
 							</p>
 						
 						
@@ -173,8 +174,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							  var y = 100;
 							  var width = 300;
 							  var height = 50;
-							  var goal = 500;      //total amount of money their trying to save
-							  var progress = 145;     //amount of money currently saved
+							  var goal = $savingsGoal;      //total amount of money their trying to save
+							  var progress = $currentSavings;     //amount of money currently saved
 
 							  var canvas = document.createElement('canvas'); //Create a canvas element
 
@@ -187,12 +188,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							  canvas.height = window.innerHeight;
 							  //Position canvas
 							  canvas.style.position='absolute';
-							  canvas.style.left=0;
-							  canvas.style.top=0;
+							  //canvas.style.left=0;
+							  //canvas.style.top=0;
 							  canvas.style.zIndex=10;
 							  canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
 							  document.body.appendChild(canvas); //Append canvas to body element
-
 
 							  document.open();
 							  document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
