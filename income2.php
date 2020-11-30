@@ -80,8 +80,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				
 				// Attempt to execute the prepared statement
 				if(mysqli_stmt_execute($stmt)){
-					echo '<script> alert("Income successfully added") </script>';
-					header("location: income.php");
+					echo '<script> alert("Income successfully added"); </script>';
+					header("location: home.php");
 				} 
 				else{
 					echo "SQL Error: ". mysqli_error($link);
@@ -93,15 +93,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 		// Update existing income
 		else{
-			$sql = "UPDATE income SET amount = ?, frequency = ?, Npercent = ?, Wpercent = ?, Spercent = ? WHERE userID = " . $_SESSION["userID"];
+			$sql = "UPDATE income SET amount = ?, frequency = ?, Npercent = ?, Wpercent = ?, Spercent = ?";
 			if($stmt = mysqli_prepare($link, $sql)){
 				// Bind variables to the prepared statement as parameters
 				mysqli_stmt_bind_param($stmt, "isiii", $income, $frequency, $Npercent, $Wpercent, $Spercent);
 				
 				// Attempt to execute the prepared statement
 				if(mysqli_stmt_execute($stmt)){
-					echo '<script> alert("Income successfully updated") </script>';
-					header("location: income.php");
+					echo '<script> alert("Income successfully updated"); </script>';
+					header("location: home.php");
 				} 
 				else{
 					echo "SQL Error: ". mysqli_error($link);

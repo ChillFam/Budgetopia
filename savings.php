@@ -128,13 +128,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
-				$sql = "SELECT amount, Spercent  FROM income WHERE userID = " . $_SESSION["userID"];
+				$sql = "SELECT amount, Spercent FROM income WHERE userID = " . $_SESSION["userID"];
 				$stmt = mysqli_query($link, $sql);
 				if (mysqli_num_rows($stmt) > 0) {
 					$row = mysqli_fetch_assoc($stmt);
 					$income = $row["amount"];
 					$percent = $row["Spercent"];
-					$budgeted = number_format($income * $percent);
+					$budgeted = number_format($income * ($percent / 100));
 					$timeLeft = number_format($leftToSave / $bugdeted); //unsure if there is a budget value in this table
 				}
 				if ($currentSavings >= $savingsGoal){
@@ -286,4 +286,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" int></script>
 </body>
 </html>
-
