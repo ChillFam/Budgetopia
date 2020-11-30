@@ -18,8 +18,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <title>Budgetopia Home</title>
     <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    </head>
+</head>
 
 <body>
     <nav class="prim-text sec-back top-bottom">
@@ -50,6 +49,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				$needsPercent = $row["need"];
 				$needsBudgeted =  $row["budget"];
                 $needsRemaining =  number_format($needsBudgeted - $needsSpent, 2);
+
                 //if remaining <0, overspent
 				echo <<<GFG
 					<div class = "lower-border">
@@ -148,11 +148,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>API for graph in the middle/side (formatting will change based on graph)</p>
 	<div id="main-content">
         <pie-chart id="pieChart">
-            <pchart-element name="Savings" value="30" colour="#00A676">
-            <pchart-element name="Wants" value="20" colour="#373F51">
-            <pchart-element name="Needs" value="50" colour="#008DD5">
+            <?php
+                <pchart-element name="Savings" value=$GLOBALS[$savingsPercent] colour="#00A676">
+                <pchart-element name="Wants" value=$GLOBALS[$wantsPercent] colour="#373F51">
+                <pchart-element name="Needs" value=$GLOBALS[$needsPercent] colour="#008DD5">
+            ?>
         </pie-chart>
-		<!-- <script src="pie-chart-js.js"></script> -->
+		<script src="pie-chart-js.js"></script>
     </div>
     <div>
 	<input class = "sub" type="submit" value="Change Password" onclick="window.location = 'changePassword.php';" >
