@@ -31,31 +31,87 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			<li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
-    <div id="main-content">
-        <pie-chart id="pieChart">
-            <pchart-element name="Savings" value="30" colour="#00A676">
-            <pchart-element name="Wants" value="20" colour="#373F51">
-            <pchart-element name="Needs" value="50" colour="#008DD5">
-        </pie-chart>
-    </div>
-    <script src="pie-chart-js.js"></script>
-    <div class="wants">
-        <p id="nPPercent">
-            Needs: *needs percent*
+    <div class = "lower-border">
+        <br>
+        <div class = "lower-border">
+            <p class = "sublabel3">
+                Current Goal:
+            </p>
+            <p class = "sublabel5">
+                $$savingsGoal for a(n) $details
+            </p>
+        </div>
+        
+        <div class = "lower-border">
+        <p class = "sublabel3">
+            Current Savings:
         </p>
-        <p id="nPBudgeted">
-            Budgeted: *needs budgeted*
+        <p class = "sublabel5">
+            $$currentSavings
         </p>
-        <p id="nPRemain">
-            Remaining: *needs remaining*
-        </p>
-        <p id="nPSpent">
-            Spent: *needs spent*
-        </p>
-        <p id="nPExpenses">
-            Expenses: *list needs expenses*
-        </p>
-        <p> ----------- </p>
+        </div>
+        
+        <div class = "lower-border">
+            <p class = "sublabel3">
+                Left to Save:
+            </p>
+            <p class = "sublabel5">
+                $$leftToSave
+            </p>
+        </div>
+        
+        <div>
+            <p class = "sublabel3">
+                Savings Goal Met in:
+            </p>
+            <p class = "sublabel5">
+                *(savings goal - savings) / savings/month* months
+            </p>
+        
+        
+            <script>
+              var x = 100;
+              var y = 100;
+              var width = 300;
+              var height = 50;
+              var goal = 500;      //total amount of money their trying to save
+              var progress = 145;     //amount of money currently saved
+
+              var canvas = document.createElement('canvas'); //Create a canvas element
+
+
+              //Set canvas width/height
+              canvas.style.width='100%';
+              canvas.style.height='100%';
+              //Set canvas drawing area width/height
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+              //Position canvas
+              canvas.style.position='absolute';
+              //canvas.style.left=0;
+              //canvas.style.top=0;
+              canvas.style.zIndex=10;
+              canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+              document.body.appendChild(canvas); //Append canvas to body element
+
+
+              document.open();
+              document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
+              document.close();
+
+
+              var context = canvas.getContext('2d');
+              context.fillStyle = 'Silver';
+              context.fillRect(x, y, width, height);  //draws base rectangle
+
+              var context1 = canvas.getContext('2d');
+              var currentGoal = progress/goal;
+              context1.fillStyle = 'LawnGreen';
+              context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+
+            </script>
+        </div>
+
     </div>
     <footer class="prim-text, sec-back">
         <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
