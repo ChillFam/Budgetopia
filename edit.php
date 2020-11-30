@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <nav class="prim-text sec-back">
         <ul>
-            <li><b>Budgetopia</b></li>
+            <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
