@@ -40,36 +40,107 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class = "space window-medium">
     
     <br>
-    <div class="needs lower-border">
-        <p class = "sublabel3" id="nPercent">
-            Needs: *needs percent*
-        </p>
-        <p class = "sublabel5" id="nBudgeted">
-            Budgeted: *needs budgeted*
-        </p>
-        <p class = "sublabel5" id="nRemain">
-            Remaining: *needs remaining*
-        </p>
-    </div>
-    <div class="wants lower-border">
-        <p class = "sublabel3" id="wPercent">
-            Wants: *wants percent*
-        </p>
-        <p class = "sublabel5" id="wBudgeted">
-            Budgeted: *wants budgeted*
-        </p>
-        <p class = "sublabel5" id="wRemain">
-            Remaining: *wants remaining*
-        </p>
-    </div>
-    <div class="savings lower-border">
-        <p class = "sublabel3" id="sPercent">
-            Savings: *savings percent*
-        </p>
-        <p class = "sublabel5" id="sBudgeted">
-            Budgeted: *savings budgeted*
-        </p>
-    </div>
+    <div class="needs"> 
+		<?php
+			$sql = "SELECT need, budget, spent FROM needs WHERE userID = " . $_SESSION["userID"];
+			$stmt = mysqli_query($link, $sql);
+			if (mysqli_num_rows($stmt) > 0) {
+                $row = mysqli_fetch_assoc($stmt);
+                $needsSpent = $row["spent"];
+				$needsPercent = $row["need"];
+				$needsBudgeted =  $row["budget"];
+                $needsRemaining =  number_format($needsBudgeted - $needsSpent, 2);
+
+				echo <<<GFG
+					<div class = "lower-border">
+						<br>
+                        <div class="needs lower-border">
+                            <p class = "sublabel3" id="nPercent">
+                                Needs: $needsPercent %
+                            </p>
+                            <p class = "sublabel5" id="nBudgeted">
+                                Budgeted: $$needsBudgeted
+                            </p>
+                            <p class = "sublabel5" id="nRemain">
+                                Remaining: $$needsRemaining
+                            </p>
+                        </div>
+					</div>
+				GFG;
+			}
+			else {
+				echo '<div class = "lower-border">';
+				echo '<h3> No needs data found </h3>';
+				echo '</div>';
+			}
+		?>
+	</div>
+    <div> 
+		<?php
+			$sql = "SELECT want, budget, spent FROM wants WHERE userID = " . $_SESSION["userID"];
+			$stmt = mysqli_query($link, $sql);
+			if (mysqli_num_rows($stmt) > 0) {
+                $row = mysqli_fetch_assoc($stmt);
+                $wantsSpent = $row["spent"];
+                $wantsPercent = $row["want"];
+				$wantsBudgeted =  $row["budget"];
+                $wantsRemaining =  number_format($wantsBudgeted - $wantsSpent, 2);
+            
+				echo <<<GFG
+					<div class = "lower-border">
+						<br>
+						<div class="wants lower-border">
+                            <p class = "sublabel3" id="wPercent">
+                                Wants: $wantsPercent %
+                            </p>
+                            <p class = "sublabel5" id="wBudgeted">
+                                Budgeted: $$wantsBudgeted
+                            </p>
+                            <p class = "sublabel5" id="wRemain">
+                                Remaining: $$wantsRemaining
+                            </p>
+                        </div>
+					</div>
+				GFG;
+			}
+			else {
+				echo '<div class = "lower-border">';
+				echo '<h3> No wants data found </h3>';
+				echo '</div>';
+			}
+		?>
+	</div>
+    <div class="savings"> 
+		<?php
+			$sql = "SELECT saving, budget FROM savings WHERE userID = " . $_SESSION["userID"];
+			$stmt = mysqli_query($link, $sql);
+			if (mysqli_num_rows($stmt) > 0) {
+                $row = mysqli_fetch_assoc($stmt);
+                $savingsPercent = $row["saving"];
+                $savingsBudgeted =  $row["budget"];
+                
+				echo <<<GFG
+					<div class = "lower-border">
+						<br>
+                        <div class="savings lower-border">
+                            <p class = "sublabel3" id="sPercent">
+                                Savings: $savingsPercent %
+                            </p>
+                            <p class = "sublabel5" id="sBudgeted">
+                                Budgeted: $$savingsBudgeted
+                            </p>
+                        </div>
+					</div>
+				GFG;
+			}
+			else {
+				echo '<div class = "lower-border">';
+				echo '<h3> No savings data found </h3>';
+				echo '</div>';
+			}
+		?>
+	</div>
+    
     <p>API for graph in the middle/side (formatting will change based on graph)</p>
 	<div id="main-content">
         <pie-chart id="pieChart">
