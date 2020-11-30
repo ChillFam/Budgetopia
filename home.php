@@ -25,7 +25,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <ul>
             <li><h2>Budgetopia</h2></li>
             <li><a href="home.php">Home</a></li>
-            <li><a href="savings.php">Savings Goal</a></li>
+            <li><a href="savings.php">Savings</a></li>
             <li><a href="income.php">Income</a></li>
 			<li><a href="expenses.php">Expenses</a></li>
 			<li><a href="logout.php">Logout</a></li>
@@ -53,20 +53,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 //if remaining <0, overspent
 				echo <<<GFG
 					<div class = "lower-border">
-						<br>
-                        <div class="needs lower-border">
-                            <p class = "sublabel3" id="nPercent">
-                                <a href="needs.php">
-                                Needs: $needsPercent %
-                                </a>
-                            </p>
-                            <p class = "sublabel5" id="nBudgeted">
-                                Budgeted: $$needsBudgeted
-                            </p>
-                            <p class = "sublabel5" id="nRemain">
-                                Remaining: $$needsRemaining
-                            </p>
-                        </div>
+					<br>
+					<div class="needs lower-border">
+					<p class = "sublabel3" id="nPercent">
+					<a href="needs.php">
+					Needs: $needsPercent %
+					</a>
+					</p>
+					<p class = "sublabel5" id="nBudgeted">
+					Budgeted: $$needsBudgeted
+					</p>
+					<p class = "sublabel5" id="nRemain">
+					Remaining: $$needsRemaining
+					</p>
+					</div>
 					</div>
 				GFG;
 			}
@@ -90,20 +90,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             
 				echo <<<GFG
 					<div class = "lower-border">
-						<br>
-						<div class="wants lower-border">
-                            <p class = "sublabel3" id="wPercent">
-                                <a href="wants.php">
-                                    Wants: $wantsPercent %
-                                </a>    
-                            </p>
-                            <p class = "sublabel5" id="wBudgeted">
-                                Budgeted: $$wantsBudgeted
-                            </p>
-                            <p class = "sublabel5" id="wRemain">
-                                Remaining: $$wantsRemaining
-                            </p>
-                        </div>
+					<br>
+					<div class="wants lower-border">
+					<p class = "sublabel3" id="wPercent">
+					<a href="wants.php">
+					Wants: $wantsPercent %
+					</a>    
+					</p>
+					<p class = "sublabel5" id="wBudgeted">
+					Budgeted: $$wantsBudgeted
+					</p>
+					<p class = "sublabel5" id="wRemain">
+					Remaining: $$wantsRemaining
+					</p>
+					</div>
 					</div>
 				GFG;
 			}
@@ -125,15 +125,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 
 				echo <<<GFG
 					<div class = "lower-border">
-						<br>
-                        <div class="savings lower-border">
-                            <p class = "sublabel3" id="sPercent">
-                                Savings: $savingsPercent %
-                            </p>
-                            <p class = "sublabel5" id="sBudgeted">
-                                Budgeted: $$savingsBudgeted
-                            </p>
-                        </div>
+					<br>
+					<div class="savings lower-border">
+					<p class = "sublabel3" id="sPercent">
+					Savings: $savingsPercent %
+					</p>
+					<p class = "sublabel5" id="sBudgeted">
+					Budgeted: $$savingsBudgeted
+					</p>
+					</div>
 					</div>
 				GFG;
 			}
@@ -147,17 +147,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <p>API for graph in the middle/side (formatting will change based on graph)</p>
 	<div id="main-content">
-        <pie-chart id="pieChart">
-            <?php
-                <pchart-element name="Savings" value=$GLOBALS[$savingsPercent] colour="#00A676">
-                <pchart-element name="Wants" value=$GLOBALS[$wantsPercent] colour="#373F51">
-                <pchart-element name="Needs" value=$GLOBALS[$needsPercent] colour="#008DD5">
-            ?>
-        </pie-chart>
+		<pie-chart id="pieChart">
+			<?php
+				echo '<pchart-element name="Savings" value=$GLOBALS[$savingsPercent] colour="#00A676">';
+				echo '<pchart-element name="Wants" value=$GLOBALS[$wantsPercent] colour="#373F51">';
+				echo '<pchart-element name="Needs" value=$GLOBALS[$needsPercent] colour="#008DD5">';
+			?>
+		</pie-chart>
 		<script src="pie-chart-js.js"></script>
     </div>
     <div>
-	<input class = "sub" type="submit" value="Change Password" onclick="window.location = 'changePassword.php';" >
+		<input class = "sub" type="submit" value="Change Password" onclick="window.location = 'changePassword.php';" >
 	</div>
     <!--
     Notes:
