@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				// Attempt to execute the prepared statement
 				if(mysqli_stmt_execute($stmt)){
 					echo '<script> alert("Income successfully added") </script>';
-					header("location: edit.php");
+					header("location: income.php");
 				} 
 				else{
 					echo "SQL Error: ". mysqli_error($link);
@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				// Attempt to execute the prepared statement
 				if(mysqli_stmt_execute($stmt)){
 					echo '<script> alert("Income successfully updated") </script>';
-					header("location: edit.php");
+					header("location: income.php");
 				} 
 				else{
 					echo "SQL Error: ". mysqli_error($link);

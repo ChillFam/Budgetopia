@@ -118,6 +118,7 @@ li {
 .page{
   background: rgb(56,193,115);
   background: linear-gradient(0deg, rgba(56,193,115,1) 0%, rgba(0,148,63,1) 75%, rgba(0,113,49,1) 100%);
+  min-height: 100%;
 }
 
 

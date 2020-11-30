@@ -158,15 +158,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							$$leftToSave
 						  </p>
 						</div>
-									<p class = "sublabel3">
-										Savings Goal Met in:
-									</p>
-						  <p class = "sublabel5">
-							*(savings goal - savings) / savings/month* months
-						</p>
-									<p>
-										*API for line graph showing progress*
-									</p>
+						
+						<div>
+							<p class = "sublabel3">
+								Savings Goal Met in:
+							</p>
+							  <p class = "sublabel5">
+								*(savings goal - savings) / savings/month* months
+							</p>
+						
+						
+							<script>
+							  var x = 100;
+							  var y = 100;
+							  var width = 300;
+							  var height = 50;
+							  var goal = 500;      //total amount of money their trying to save
+							  var progress = 145;     //amount of money currently saved
+
+							  var canvas = document.createElement('canvas'); //Create a canvas element
+
+
+							  //Set canvas width/height
+							  canvas.style.width='100%';
+							  canvas.style.height='100%';
+							  //Set canvas drawing area width/height
+							  canvas.width = window.innerWidth;
+							  canvas.height = window.innerHeight;
+							  //Position canvas
+							  canvas.style.position='absolute';
+							  canvas.style.left=0;
+							  canvas.style.top=0;
+							  canvas.style.zIndex=10;
+							  canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+							  document.body.appendChild(canvas); //Append canvas to body element
+
+
+							  document.open();
+							  document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
+							  document.close();
+
+
+							  var context = canvas.getContext('2d');
+							  context.fillStyle = 'Silver';
+							  context.fillRect(x, y, width, height);  //draws base rectangle
+
+							  var context1 = canvas.getContext('2d');
+							  var currentGoal = progress/goal;
+							  context1.fillStyle = 'LawnGreen';
+							  context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+
+							</script>
+						</div>
 
 					</div>
 				GFG;
