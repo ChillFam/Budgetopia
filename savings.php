@@ -128,97 +128,105 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
-				$sql = "SELECT budget FROM savings WHERE userID = " . $_SESSION["userID"];
+				$sql = "SELECT amount, Spercent  FROM income WHERE userID = " . $_SESSION["userID"];
 				$stmt = mysqli_query($link, $sql);
 				if (mysqli_num_rows($stmt) > 0) {
 					$row = mysqli_fetch_assoc($stmt);
-					$timeLeft = number_format($leftToSave / $sql); //unsure if there is a budget value in this table
+					$income = $row["amount"];
+					$percent = $row["Spercent"];
+					$budgeted = number_format($income * $percent);
+					$timeLeft = number_format($leftToSave / $bugdeted); //unsure if there is a budget value in this table
 				}
-				//if current > goal congrats
-				echo <<<GFG
-					<div class = "lower-border">
-						<br>
+				if ($currentSavings >= $savingsGoal){
+					echo <<<GFG
+						<p> Congratulations! You completed your savings goal for your $details</p>
+					GFG;
+				} 
+				else {
+					echo <<<GFG
 						<div class = "lower-border">
-							<p class = "sublabel3">
-								Current Goal:
-							</p>
-							<p class = "sublabel5">
-								$$savingsGoal for a(n) $details
-							</p>
+							<br>
+							<div class = "lower-border">
+								<p class = "sublabel3">
+									Current Goal:
+								</p>
+								<p class = "sublabel5">
+									$$savingsGoal for a(n) $details
+								</p>
+							</div>
+							
+							<div class = "lower-border">
+								<p class = "sublabel3">
+									Current Savings:
+								</p>
+								<p class = "sublabel5">
+									$$currentSavings
+								</p>
+							</div>
+							
+							<div class = "lower-border">
+								<p class = "sublabel3">
+									Left to Save:
+								</p>
+								<p class = "sublabel5">
+									$$leftToSave
+								</p>
+							</div>
+							
+							<div>
+								<p class = "sublabel3">
+									Savings Goal Met in:
+								</p>
+								<p class = "sublabel5">
+									$timeLeft months
+								</p>
+							
+							
+								<script>
+								var x = 100;
+								var y = 100;
+								var width = 300;
+								var height = 50;
+								var goal = $savingsGoal;      //total amount of money their trying to save
+								var progress = $currentSavings;     //amount of money currently saved
+
+								var canvas = document.createElement('canvas'); //Create a canvas element
+
+
+								//Set canvas width/height
+								canvas.style.width='100%';
+								canvas.style.height='100%';
+								//Set canvas drawing area width/height
+								canvas.width = window.innerWidth;
+								canvas.height = window.innerHeight;
+								//Position canvas
+								canvas.style.position='absolute';
+								//canvas.style.left=0;
+								//canvas.style.top=0;
+								canvas.style.zIndex=10;
+								canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+								document.body.appendChild(canvas); //Append canvas to body element
+
+								document.open();
+								document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
+								document.close();
+
+
+								var context = canvas.getContext('2d');
+								context.fillStyle = 'Silver';
+								context.fillRect(x, y, width, height);  //draws base rectangle
+
+								var context1 = canvas.getContext('2d');
+								var currentGoal = progress/goal;
+								context1.fillStyle = 'LawnGreen';
+								context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+
+								</script>
+							</div>
+
 						</div>
-						
-						<div class = "lower-border">
-							<p class = "sublabel3">
-								Current Savings:
-							</p>
-					    	<p class = "sublabel5">
-								$$currentSavings
-					    	</p>
-						</div>
-						
-						<div class = "lower-border">
-							<p class = "sublabel3">
-								Left to Save:
-							</p>
-							<p class = "sublabel5">
-								$$leftToSave
-							</p>
-						</div>
-						
-						<div>
-							<p class = "sublabel3">
-								Savings Goal Met in:
-							</p>
-							<p class = "sublabel5">
-								$timeLeft months
-							</p>
-						
-						
-							<script>
-							  var x = 100;
-							  var y = 100;
-							  var width = 300;
-							  var height = 50;
-							  var goal = $savingsGoal;      //total amount of money their trying to save
-							  var progress = $currentSavings;     //amount of money currently saved
-
-							  var canvas = document.createElement('canvas'); //Create a canvas element
-
-
-							  //Set canvas width/height
-							  canvas.style.width='100%';
-							  canvas.style.height='100%';
-							  //Set canvas drawing area width/height
-							  canvas.width = window.innerWidth;
-							  canvas.height = window.innerHeight;
-							  //Position canvas
-							  canvas.style.position='absolute';
-							  //canvas.style.left=0;
-							  //canvas.style.top=0;
-							  canvas.style.zIndex=10;
-							  canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
-							  document.body.appendChild(canvas); //Append canvas to body element
-
-							  document.open();
-							  document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
-							  document.close();
-
-
-							  var context = canvas.getContext('2d');
-							  context.fillStyle = 'Silver';
-							  context.fillRect(x, y, width, height);  //draws base rectangle
-
-							  var context1 = canvas.getContext('2d');
-							  var currentGoal = progress/goal;
-							  context1.fillStyle = 'LawnGreen';
-							  context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
-
-							</script>
-						</div>
-
-					</div>
-				GFG;
-
+					GFG;
+				}
 			}
 			else {
 				echo '<div class = "lower-border">';
