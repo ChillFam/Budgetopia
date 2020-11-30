@@ -145,7 +145,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		?>
 	</div>
     
-    <p>API for graph in the middle/side (formatting will change based on graph)</p>
+    
 	<div id="main-content">
 		<pie-chart id="pieChart">
 			<?php
