@@ -81,8 +81,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$email_err = "Invalid email format";
 	}
 	else {
-		$email = trim($_POST["email"]);
+		// Prepare a select statement
+        $sql = "SELECT email FROM users WHERE email = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", trim($_POST["email"]));
+			
+			if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $email_err = "This email is already in use";
+                } 
+				else {
+					$email = trim($_POST["email"]);
+				}
+			}
+		}
 	}
+	
 	
 	// Get new userID to be assigned
 	/*
@@ -123,6 +142,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
+				session_start();
+                            
+				// Store data in session variables
+				$_SESSION["loggedin"] = true;
+				$_SESSION["userID"] = $userID;
+				$_SESSION["username"] = $username; 
                 header("location: login.php");
             } else{
                 echo "SQL Error: ". mysqli_error($link);

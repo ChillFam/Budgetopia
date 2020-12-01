@@ -69,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
             mysqli_stmt_close($stmt);
         }
+		
 	}
 	else {
 		#echo $amount_err . "\n" . $label_err . "\n" . $category_err . "\n" . $frequency_err;

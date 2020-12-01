@@ -128,14 +128,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$currentSavings =  $row["currentSavings"];
 				$dateAdded = $row["dateAdded"];
 				$leftToSave = number_format($savingsGoal - $currentSavings, 2);
-				$sql = "SELECT amount, Spercent FROM income WHERE userID = " . $_SESSION["userID"];
+				$sql = "SELECT amount, Spercent, frequency FROM income WHERE userID = " . $_SESSION["userID"];
 				$stmt = mysqli_query($link, $sql);
 				if (mysqli_num_rows($stmt) > 0) {
 					$row = mysqli_fetch_assoc($stmt);
 					$income = $row["amount"];
 					$percent = $row["Spercent"];
-					$budgeted = number_format($income * ($percent / 100));
-					$timeLeft = number_format($leftToSave / $bugdeted); //unsure if there is a budget value in this table
+					$frequency = $row["frequency"];
+					
+					if ($frequency == "weekly") {
+						$income = $income * 4;
+					}
+					elseif ($frequency == "biweekly") {
+						$income = $income * 2;
+					}
+					
+					$budgeted = number_format($income * ($percent / 100), 2);
+					$timeLeft = number_format($leftToSave / $budgeted, 2);
+					$timeLeft = round($timeLeft * 30);
+					
 				}
 				if ($currentSavings >= $savingsGoal){
 					echo <<<GFG
@@ -175,10 +186,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							
 							<div>
 								<p class = "sublabel3">
-									Savings Goal Met in:
+									Savings Goal Met in about:
 								</p>
 								<p class = "sublabel5">
-									$timeLeft months
+									$timeLeft Days
 								</p>
 							
 							
@@ -189,6 +200,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								var height = 50;
 								var goal = $savingsGoal;      //total amount of money their trying to save
 								var progress = $currentSavings;     //amount of money currently saved
+								var progressPercent = Math.round(progress / goal * 100);
 
 								var canvas = document.createElement('canvas'); //Create a canvas element
 
@@ -208,7 +220,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								document.body.appendChild(canvas); //Append canvas to body element
 
 								document.open();
-								document.write("Savings Goal Progress: " + progress + "/" + goal); //prints header of the graph
+								document.write("Savings Goal Progress: " + progressPercent + "%"); //prints header of the graph
 								document.close();
 
 
