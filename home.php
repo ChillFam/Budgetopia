@@ -78,8 +78,8 @@ require_once "config.php";
 										$income = $row["amount"];
 									}
 									
-									$needsBudgeted = number_format(($NPercent / 100) * $income, 2);
-									$needsRemaining =  $needsBudgeted - $needsSpent;
+									$needsBudgeted = round(($NPercent / 100) * $income);
+									$needsRemaining = $needsBudgeted - $needsSpent;
 									
 									if ($needsRemaining < 0) {
 										$overbudget = abs($needsRemaining);
@@ -104,6 +104,9 @@ require_once "config.php";
 												</p>
 												<p class = "sublabel5" id="nBudgeted">
 													<b> Budgeted: $$needsBudgeted </b>
+												</p>
+												<p class = "sublabel5" id="nSpent">
+													<b> Spent: $$needsSpent </b>
 												</p>
 												<p class = "sublabel5" id="nRemain">
 													<b> Remaining: $$needsRemaining </b>
@@ -159,7 +162,7 @@ require_once "config.php";
 										$income = $row["amount"];
 									}
 									
-									$wantsBudgeted = number_format(($WPercent / 100) * $income, 2);
+									$wantsBudgeted = round(($WPercent / 100) * $income);
 									$wantsRemaining = $wantsBudgeted - $wantsSpent;
 												
 									if ($wantsRemaining < 0) {
@@ -185,6 +188,9 @@ require_once "config.php";
 											</p>
 											<p class = "sublabel5" id="wBudgeted">
 											<b> Budgeted: $$wantsBudgeted </b>
+											</p>
+											<p class = "sublabel5" id="wSpent">
+											<b> Spent: $$wantsSpent </b>
 											</p>
 											<p class = "sublabel5" id="wRemain">
 											<b> Remaining: $$wantsRemaining </b>
@@ -223,7 +229,7 @@ require_once "config.php";
 									$income = $row["amount"];
 								}
 								
-								$savingsBudgeted = number_format($income * ($SPercent / 100), 2);
+								$savingsBudgeted = round($income * ($SPercent / 100));
 								
 								echo <<<GFG
 									<div class="savings lower-border">
