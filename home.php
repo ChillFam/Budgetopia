@@ -183,7 +183,7 @@ require_once "config.php";
 											<div class="wants lower-border">
 											<p class = "sublabel3" id="wPercent">
 											<a class = "sub" href="wants.php">
-											Wants: $WPercent %
+											Wants: $WPercent%
 											</a>    
 											</p>
 											<p class = "sublabel5" id="wBudgeted">
