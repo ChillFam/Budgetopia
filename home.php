@@ -98,7 +98,7 @@ require_once "config.php";
 										echo <<<GFG
 											<div class="needs lower-border">
 												<p class = "sublabel3" id="wPercent">
-													<a href="needs.php">
+													<a class = "sub" href="needs.php">
 														Needs: $NPercent%
 													</a>    
 												</p>
@@ -182,7 +182,7 @@ require_once "config.php";
 										echo <<<GFG
 											<div class="wants lower-border">
 											<p class = "sublabel3" id="wPercent">
-											<a href="wants.php">
+											<a class = "sub" href="wants.php">
 											Wants: $WPercent %
 											</a>    
 											</p>
@@ -234,7 +234,7 @@ require_once "config.php";
 								echo <<<GFG
 									<div class="savings lower-border">
 									<p class = "sublabel3" id="sPercent">
-									<a href="savings.php">
+									<a class = "sub" href="savings.php">
 									Savings: $SPercent%
 									</a>
 									</p>

@@ -67,15 +67,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: home.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "Invalid Password.";
+                            $password_err = "Invalid Password";
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "Account not found.";
+                    $username_err = "Account not found";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Something went wrong. Please try again later";
             }
 
             // Close statement
