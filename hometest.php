@@ -85,12 +85,14 @@ require_once "config.php";
 										$overbudget = abs($needsRemaining);
 										echo <<<GFG
 											<div class="needs lower-border">
-											<p class = "sublabel3" id="nPercent">
-											<a href="needs.php">
-											Needs: $NPercent%
-											</a>    
-											</p>
-											<p class = "sublabel5"><b>Over Budget by $$overbudget!</b></p>
+                                                <p class = "sublabel3" id="nPercent">
+                                                    <a href="needs.php">
+                                                        Needs: $NPercent%
+                                                    </a>    
+                                                </p>
+                                                <p class = "sublabel5">
+                                                    <b>Over Budget by $$overbudget!</b>
+                                                </p>
 											</div>
 										GFG;
 									}
