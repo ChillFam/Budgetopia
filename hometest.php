@@ -167,7 +167,7 @@ require_once "config.php";
 										echo <<<GFG
 											<div class="wants lower-border">
 											<p class = "sublabel3" id="wPercent">
-											<a href="wants.php">
+											<a  class = "sub" href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
