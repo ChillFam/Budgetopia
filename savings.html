@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- These are comments -->
+
+<head>
+    <title>Budgetopia Savings</title>
+    <link rel="stylesheet" type="text/css" href="budgetopiaStyles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('graph');
+      var per = 0.65;
+      var percent = canvas.width*per;
+      //document.getElementById('graphInfo').innerHTML = "Savings Goal Progress: 10%";
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        
+        /*var ctx1 = canvas.getContext('2d');
+        var x = 100;
+        var y = 100;
+        var goal = 10;      //total amount of money their trying to save
+        var progress = 1;     //amount of money currently saved
+        var progressPercent = progress / goal;
+
+        var canvas = document.createElement('canvas'); //Create a canvas element
+
+
+        //Set canvas width/height
+        canvas.style.width='100%';
+        canvas.style.height='100%';
+        //Set canvas drawing area width/height
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        //Position canvas
+        canvas.style.position='absolute';
+        //canvas.style.left=0;
+        //canvas.style.top=0;
+        
+        canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+        document.body.appendChild(canvas); //Append canvas to body element
+
+        document.open();
+        document.write("Savings Goal Progress: " + progressPercent + "%"); //prints header of the graph
+        document.close();
+
+
+        var context = canvas.getContext('2d');
+        ctx.fillStyle = 'Silver';
+        ctx.fillRect(x, y, width, height);  //draws base rectangle
+
+        var ctx1 = canvas.getContext('2d');
+        var currentGoal = progress/goal;
+        ctx1.fillStyle = 'LawnGreen';
+        ctx1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+*/      canvas.style.zIndex=10;
+        ctx.fillStyle = 'Silver';
+        ctx.fillRect(0,0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'LawnGreen';
+        ctx.fillRect(0, 0, percent, canvas.height);
+      }
+    }
+  </script>
+  <style type="text/css">
+    canvas { border: 1px solid black; }
+  </style>
+</head>
+
+<body>
+    <nav class="prim-text sec-back top-bottom">
+        <ul>
+            <li><h2>Budgetopia</h2></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="savings.php">Savings</a></li>
+            <li><a href="income.php">Income</a></li>
+			<li><a href="expenses.php">Expenses</a></li>
+			<li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+	
+	<div class = "page">
+        <div class = "full">
+            <div class = "head window-medium">
+		        Savings Goal
+            </div>
+            <div class = "space window-medium">
+	            <div>			
+                    <div class = "lower-border">
+                        <br>
+                        <div class = "lower-border">
+                            <p class = "sublabel3">
+                                Current Goal:
+                            </p>
+                            <p class = "sublabel5">
+                                $10 for bobas
+                            </p>
+                        </div>
+            
+                        <div class = "lower-border">
+                            <p class = "sublabel3">
+                                Current Savings:
+                            </p>
+                            <p class = "sublabel5">
+                                $1
+                            </p>
+                        </div>
+            
+                        <div class = "lower-border">
+                            <p class = "sublabel3">
+                                Left to Save:
+                            </p>
+                            <p class = "sublabel5">
+                                $9
+                            </p>
+                        </div>
+            
+                        <div>
+                            <p class = "sublabel3">
+                                Savings Goal Met in about:
+                            </p>
+                            <p class = "sublabel5">
+                                5 Days
+                            </p>
+                            <div onload="draw();">
+                                <canvas id="graph" width="300" height="50"></canvas>
+                                <!--<p id="graphInfo"></p>-->
+                            </div>
+                        </div>
+                    </div>	
+	            </div>
+    
+
+                <p class = "sublabel3">New Savings Goal</p>
+                <p class = "sublabel4">(will replace previous goal)</p>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <label class = "sublabel2" for="details">What are you saving for?</label><br>
+                    <div class = "textbox">
+                        <input class = "form-control" type="text" id="details" name="details" required>
+                    </div>
+                    <br>
+                    <label class = "sublabel2" for="savingsGoal">Savings Goal ($):</label><br>
+                    <div class = "textbox">
+                        <input class = "form-control" type="number" id="savingsGoal" name="savingsGoal" min="1" required>
+                    </div>
+                    <br>
+                    <label class = "sublabel2" for="currentSavings">Current Savings ($):</label><br>
+                    <div class = "textbox">
+                        <input class = "form-control" type="number" id="currentSavings" name="currentSavings" min= "0" required><br>
+                    </div>
+                    <input class = "sub" type="submit" value="Add Savings Goal">
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    <footer class="prim-text, sec-back top-bottom">
+        <address> Created by the Budgeteers for CSCI 187 Fall 2020</address>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" int></script>
+</body>
+</html>
