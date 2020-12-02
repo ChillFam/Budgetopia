@@ -238,9 +238,9 @@ require_once "config.php";
 							echo <<<GFG
 								<div id="main-content">
 									<pie-chart id="pieChart">
-											echo '<pchart-element name="Savings" value=$SPercent colour="#00A676">';
-											echo '<pchart-element name="Wants" value=$WPercent colour="#373F51">';
-											echo '<pchart-element name="Needs" value=$NPercent colour="#008DD5">';
+											<pchart-element name="Savings" value=$SPercent colour="#00A676">;
+											<pchart-element name="Wants" value=$WPercent colour="#373F51">;
+											<pchart-element name="Needs" value=$NPercent colour="#008DD5">;
 									</pie-chart>
 									<script src="pie-chart-js.js"></script>
 								</div>
