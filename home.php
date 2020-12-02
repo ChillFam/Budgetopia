@@ -165,7 +165,7 @@ require_once "config.php";
 										echo <<<GFG
 											<div class="wants lower-border">
 											<p class = "sublabel3" id="wPercent">
-											<a href="wants.php">
+											<a class = "sub" href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
@@ -240,17 +240,23 @@ require_once "config.php";
 								echo '<h3> No data found </h3>';
 								echo '</div>';
 							}
-						
-							echo <<<GFG
-								<div id="main-content">
-									<pie-chart id="pieChart">
-											echo '<pchart-element name="Savings" value=$SPercent colour="#00A676">';
-											echo '<pchart-element name="Wants" value=$WPercent colour="#373F51">';
-											echo '<pchart-element name="Needs" value=$NPercent colour="#008DD5">';
-									</pie-chart>
-									<script src="pie-chart-js.js"></script>
-								</div>
-							GFG;
+							
+							if (!empty($NPercent)){
+								$NPercent = intval($NPercent);
+								$WPercent = intval($WPercent);
+								$SPercent = intval($SPercent);
+								
+								echo <<<GFG
+									<div id="main-content">
+										<pie-chart id="pieChart">
+												<pchart-element name="Needs" value=$NPercent colour="#008DD5">
+												<pchart-element name="Wants" value=$WPercent colour="#373F51">
+												<pchart-element name="Savings" value=$SPercent colour="#00A676">
+										</pie-chart>
+										<script src="pie-chart-js.js"></script>
+									</div>
+								GFG;
+							}
 						?>
 					</div>
 					<div>
