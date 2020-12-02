@@ -58,7 +58,7 @@ class PChart extends HTMLElement {
         //var positionInfo = this.getBoundingClientRect();
         //var height = positionInfo.height;
         //var width = positionInfo.width;
-        var height = 1000;
+        var height = 400;
         var width = 1000; //change size of window to draw in
         c.width  = width;
         c.height = height;
@@ -73,10 +73,10 @@ class PChart extends HTMLElement {
         }
 
 
-        this.y_origin = height * 0.5/2.0; //pos of center of chart
+        this.y_origin = height /2.0; //pos of center of chart
         this.x_origin = c.width * 0.5/2.0;
-        this.radius = c.width * 0.35/2.0;
-        var max_radius = c.height * 0.35/2.0;
+        this.radius = c.width /2.0;
+        var max_radius = c.height /3.0;
         if (this.radius > max_radius) {
             this.radius = max_radius;
         }
