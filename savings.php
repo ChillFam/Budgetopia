@@ -194,44 +194,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							
 							
 								<script>
-								var x = 100;
-								var y = 100;
-								var width = 300;
-								var height = 50;
-								var goal = $savingsGoal;      //total amount of money their trying to save
-								var progress = $currentSavings;     //amount of money currently saved
-								var progressPercent = Math.round(progress / goal * 100);
+									var x = 100;
+									var y = 100;
+									var width = 300;
+									var height = 50;
+									var goal = $savingsGoal;      //total amount of money their trying to save
+									var progress = $currentSavings;     //amount of money currently saved
+									var progressPercent = Math.round(progress / goal * 100);
 
-								var canvas = document.createElement('canvas'); //Create a canvas element
-
-
-								//Set canvas width/height
-								canvas.style.width='100%';
-								canvas.style.height='100%';
-								//Set canvas drawing area width/height
-								canvas.width = window.innerWidth;
-								canvas.height = window.innerHeight;
-								//Position canvas
-								canvas.style.position='absolute';
-								//canvas.style.left=0;
-								//canvas.style.top=0;
-								canvas.style.zIndex=10;
-								canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
-								document.body.appendChild(canvas); //Append canvas to body element
-
-								document.open();
-								document.write("Savings Goal Progress: " + progressPercent + "%"); //prints header of the graph
-								document.close();
+									var canvas = document.createElement('canvas'); //Create a canvas element
 
 
-								var context = canvas.getContext('2d');
-								context.fillStyle = 'Silver';
-								context.fillRect(x, y, width, height);  //draws base rectangle
+									//Set canvas width/height
+									canvas.style.width='100%';
+									canvas.style.height='100%';
+									//Set canvas drawing area width/height
+									canvas.width = window.innerWidth;
+									canvas.height = window.innerHeight;
+									//Position canvas
+									canvas.style.position='absolute';
+									//canvas.style.left=0;
+									//canvas.style.top=0;
+									canvas.style.zIndex=10;
+									canvas.style.pointerEvents='none'; //Make sure you can click 'through' the canvas
+									document.body.appendChild(canvas); //Append canvas to body element
 
-								var context1 = canvas.getContext('2d');
-								var currentGoal = progress/goal;
-								context1.fillStyle = 'LawnGreen';
-								context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
+									document.open();
+									document.write("Savings Goal Progress: " + progressPercent + "%"); //prints header of the graph
+									document.close();
+
+
+									var context = canvas.getContext('2d');
+									context.fillStyle = 'Silver';
+									context.fillRect(x, y, width, height);  //draws base rectangle
+
+									var context1 = canvas.getContext('2d');
+									var currentGoal = progress/goal;
+									context1.fillStyle = 'LawnGreen';
+									context1.fillRect(x, y, width*currentGoal, height); //fills in rectangle to depict progress
 
 								</script>
 							</div>
