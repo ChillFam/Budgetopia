@@ -122,7 +122,7 @@ require_once "config.php";
 										GFG;
 									}
 								}
-							}
+							
 							else {
 								echo '<div class = "lower-border">';
 								echo '<h3> No data found - Head to Income tab to get started</h3>';
