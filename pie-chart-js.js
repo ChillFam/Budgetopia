@@ -237,4 +237,3 @@ class PChart extends HTMLElement {
 //var pchart_element = Object.create(HTMLElement.prototype);
 window.customElements.define('pchart-element',PChartElement);
 window.customElements.define('pie-chart',PChart);
-

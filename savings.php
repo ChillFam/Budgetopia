@@ -144,7 +144,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					}
 					
 					$budgeted = number_format($income * ($percent / 100), 2);
-					$timeLeft = round($leftToSave / $budgeted);
+					$timeLeft = number_format($leftToSave / $budgeted, 2);
 					$timeLeft = round($timeLeft * 30);
 					
 				}
