@@ -85,7 +85,8 @@ require_once "config.php";
 										$overbudget = abs($needsRemaining);
 										echo <<<GFG
 											<div class="needs lower-border">
-											<p class = "sublabel3" id="nPercent"> <a class = "sub" href="needs.php">
+											<p class = "sublabel3" id="nPercent">
+											<a class = "sub" href="needs.php">
 											Needs: $NPercent%
 											</a>    
 											</p>
@@ -96,10 +97,11 @@ require_once "config.php";
 									else {
 										echo <<<GFG
 											<div class="needs lower-border">
-											<p class = "sublabel3" id="nPercent"> <a class = "sub" href="needs.php">
-											Needs: $NPercent%
-											</a>    
-											</p>
+												<p class = "sublabel3" id="wPercent">
+													<a class = "sub" href="needs.php">
+														Needs: $NPercent%
+													</a>    
+												</p>
 												<p class = "sublabel5" id="nBudgeted">
 													<b> Budgeted: $$needsBudgeted </b>
 												</p>
@@ -120,11 +122,6 @@ require_once "config.php";
 								echo '</div>';
 							}
 						
-						?>
-					</div>
-						
-					<div class="wants"> 
-						<?php
 							$sql = "SELECT amount, frequency FROM expenses WHERE category = 'wants' AND userID = " . $_SESSION["userID"];	
 							$stmt = mysqli_query($link, $sql);							
 							if (mysqli_num_rows($stmt) > 0) {
@@ -167,7 +164,8 @@ require_once "config.php";
 										$overbudget = abs($wantsRemaining);
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent"> <a class = "sub" href="wants.php">
+											<p class = "sublabel3" id="wPercent">
+											<a href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
@@ -178,7 +176,8 @@ require_once "config.php";
 									else {
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent"> <a class = "sub" href="wants.php">
+											<p class = "sublabel3" id="wPercent">
+											<a class = "sub" href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
@@ -202,11 +201,6 @@ require_once "config.php";
 								echo '</div>';
 							}
 						
-						?>
-					</div>
-					
-					<div class="savings"> 
-						<?php
 							$sql = "SELECT amount, frequency, SPercent FROM income WHERE userID = " . $_SESSION["userID"];
 							$stmt = mysqli_query($link, $sql);
 							if (mysqli_num_rows($stmt) > 0) {
@@ -229,7 +223,8 @@ require_once "config.php";
 								
 								echo <<<GFG
 									<div class="savings lower-border">
-									<p class = "sublabel3" id="sPercent"> <a class = "sub" href="savings.php">
+									<p class = "sublabel3" id="sPercent">
+									<a class = "sub" href="savings.php">
 									Savings: $SPercent%
 									</a>
 									</p>
@@ -246,19 +241,17 @@ require_once "config.php";
 								echo '</div>';
 							}
 						
+							echo <<<GFG
+								<div id="main-content">
+									<pie-chart id="pieChart">
+											echo '<pchart-element name="Savings" value=$SPercent colour="#00A676">';
+											echo '<pchart-element name="Wants" value=$WPercent colour="#373F51">';
+											echo '<pchart-element name="Needs" value=$NPercent colour="#008DD5">';
+									</pie-chart>
+									<script src="pie-chart-js.js"></script>
+								</div>
+							GFG;
 						?>
-					</div>
-					
-					<p>API for graph in the middle/side (formatting will change based on graph)</p>
-					<div id="main-content">
-						<pie-chart id="pieChart">
-							<?php
-								echo '<pchart-element name="Savings" value=$GLOBALS[$SPercent] colour="#00A676">';
-								echo '<pchart-element name="Wants" value=$GLOBALS[$WPercent] colour="#373F51">';
-								echo '<pchart-element name="Needs" value=$GLOBALS[$NPercent] colour="#008DD5">';
-							?>
-						</pie-chart>
-						<script src="pie-chart-js.js"></script>
 					</div>
 					<div>
 						<input class = "sub" type="submit" value="Change Password" onclick="window.location = 'changePassword.php';" >
@@ -282,4 +275,3 @@ require_once "config.php";
 
 	</body>
 </html>
-
