@@ -43,44 +43,43 @@ require_once "config.php";
 					<br>
 					<div> 
 						<?php
-							$sql = "SELECT amount, frequency, NPercent FROM income WHERE userID = " . $_SESSION["userID"];	
+							$sql = "SELECT amount, frequency FROM expenses WHERE category = 'needs' AND userID = " . $_SESSION["userID"];	
 							$stmt = mysqli_query($link, $sql);							
 							if (mysqli_num_rows($stmt) > 0) {
 								$needsBudgeted = $needsSpent = 0;
-								$row = mysqli_fetch_assoc($stmt);
-								$frequency = $row["frequency"];
-								$NPercent = $row["NPercent"];
-								$income = 0;
 								
-								if ($frequency == "weekly") {
-									$income = $row["amount"] * 4;
-								}
-								elseif ($frequency == "biweekly") {
-									$income = $row["amount"] * 2;
-								}
-								else {
-									$income = $row["amount"];
-								}
-								
-								$sql = "SELECT amount, frequency FROM expenses WHERE category = 'needs' AND userID = " . $_SESSION["userID"];	
-								$stmt = mysqli_query($link, $sql);
-								if (mysqli_num_rows($stmt) > 0) {
-									
-									while ($row = mysqli_fetch_assoc($stmt)) {
-										if ($row["frequency"] == "daily") {
-											$needsSpent = $needsSpent + ($row["amount"] * 30);
-										}
-										elseif ($row["frequency"] == "weekly") {
-											$needsSpent = $needsSpent + ($row["amount"] * 4);
-										}
-										else {
-											$needsSpent = $needsSpent + $row["amount"];
-										}
+								while ($row = mysqli_fetch_assoc($stmt)) {
+									if ($row["frequency"] == "daily") {
+										$needsSpent = $needsSpent + ($row["amount"] * 30);
+									}
+									elseif ($row["frequency"] == "weekly") {
+										$needsSpent = $needsSpent + ($row["amount"] * 4);
+									}
+									else {
+										$needsSpent = $needsSpent + $row["amount"];
 									}
 								}
+								
+								$sql = "SELECT amount, frequency, NPercent FROM income WHERE userID = " . $_SESSION["userID"];
+								$stmt = mysqli_query($link, $sql);
+								if (mysqli_num_rows($stmt) > 0) {
+									$row = mysqli_fetch_assoc($stmt);
+									$frequency = $row["frequency"];
+									$NPercent = $row["NPercent"];
+									$income = 0;
 									
-								$needsBudgeted = round(($NPercent / 100) * $income);
-								$needsRemaining = $needsBudgeted - $needsSpent;
+									if ($frequency == "weekly") {
+										$income = $row["amount"] * 4;
+									}
+									elseif ($frequency == "biweekly") {
+										$income = $row["amount"] * 2;
+									}
+									else {
+										$income = $row["amount"];
+									}
+									
+									$needsBudgeted = round(($NPercent / 100) * $income);
+									$needsRemaining = $needsBudgeted - $needsSpent;
 									
 									if ($needsRemaining < 0) {
 										$overbudget = abs($needsRemaining);
@@ -89,13 +88,7 @@ require_once "config.php";
 											<p class = "sublabel3" id="nPercent">
 											<a class = "sub" href="needs.php">
 											Needs: $NPercent%
-											</a>  
-											<p class = "sublabel5" id="nBudgeted">
-												<b> Budgeted: $$needsBudgeted </b>
-											</p>
-											<p class = "sublabel5" id="nSpent">
-												<b> Spent: $$needsSpent </b>
-											</p>  
+											</a>    
 											</p>
 											<p class = "sublabel5"><b>Over Budget by $$overbudget!</b></p>
 											</div>
@@ -122,51 +115,50 @@ require_once "config.php";
 										GFG;
 									}
 								}
-							
+							}
 							else {
 								echo '<div class = "lower-border">';
 								echo '<h3> No data found - Head to Income tab to get started</h3>';
 								echo '</div>';
 							}
 						
-							$sql = "SELECT amount, frequency, WPercent FROM income WHERE userID = " . $_SESSION["userID"];	
+							$sql = "SELECT amount, frequency FROM expenses WHERE category = 'wants' AND userID = " . $_SESSION["userID"];	
 							$stmt = mysqli_query($link, $sql);							
 							if (mysqli_num_rows($stmt) > 0) {
 								$wantsBudgeted = $wantsSpent = 0;
 								
-								$row = mysqli_fetch_assoc($stmt);
-								$frequency = $row["frequency"];
-								$WPercent = $row["WPercent"];
-								$income = 0;
-								
-								if ($frequency == "weekly") {
-									$income = $row["amount"] * 4;
-								}
-								elseif ($frequency == "biweekly") {
-									$income = $row["amount"] * 2;
-								}
-								else {
-									$income = $row["amount"];
-								}
-								$sql = "SELECT amount, frequency FROM expenses WHERE category = 'wants' AND userID = " . $_SESSION["userID"];	
-								$stmt = mysqli_query($link, $sql);
-								if (mysqli_num_rows($stmt) > 0) {
-									
-									while ($row = mysqli_fetch_assoc($stmt)) {
-										if ($row["frequency"] == "daily") {
-											$wantsSpent = $wantsSpent + ($row["amount"] * 30);
-										}
-										elseif ($row["frequency"] == "weekly") {
-											$wantsSpent = $wantsSpent + ($row["amount"] * 4);
-										}
-										else {
-											$wantsSpent = $wantsSpent + $row["amount"];
-										}
+								while ($row = mysqli_fetch_assoc($stmt)) {
+									if ($row["frequency"] == "daily") {
+										$wantsSpent = $wantsSpent + ($row["amount"] * 30);
+									}
+									elseif ($row["frequency"] == "weekly") {
+										$wantsSpent = $wantsSpent + ($row["amount"] * 4);
+									}
+									else {
+										$wantsSpent = $wantsSpent + $row["amount"];
 									}
 								}
+								
+								$sql = "SELECT amount, frequency, WPercent FROM income WHERE userID = " . $_SESSION["userID"];
+								$stmt = mysqli_query($link, $sql);
+								if (mysqli_num_rows($stmt) > 0) {
+									$row = mysqli_fetch_assoc($stmt);
+									$frequency = $row["frequency"];
+									$WPercent = $row["WPercent"];
+									$income = 0;
 									
-								$wantsBudgeted = round(($WPercent / 100) * $income);
-								$wantsRemaining = $wantsBudgeted - $wantsSpent;
+									if ($frequency == "weekly") {
+										$income = $row["amount"] * 4;
+									}
+									elseif ($frequency == "biweekly") {
+										$income = $row["amount"] * 2;
+									}
+									else {
+										$income = $row["amount"];
+									}
+									
+									$wantsBudgeted = round(($WPercent / 100) * $income);
+									$wantsRemaining = $wantsBudgeted - $wantsSpent;
 												
 									if ($wantsRemaining < 0) {
 										$overbudget = abs($wantsRemaining);
@@ -175,13 +167,7 @@ require_once "config.php";
 											<p class = "sublabel3" id="wPercent">
 											<a class = "sub" href="wants.php">
 											Wants: $WPercent%
-											</a> 
-											<p class = "sublabel5" id="wBudgeted">
-											<b> Budgeted: $$wantsBudgeted </b>
-											</p>
-											<p class = "sublabel5" id="wSpent">
-											<b> Spent: $$wantsSpent </b>
-											</p>   
+											</a>    
 											</p>
 											<p class = "sublabel5"><b>Over Budget by $$overbudget!</b></p>
 											</div>
@@ -208,7 +194,7 @@ require_once "config.php";
 										GFG;
 									}
 								}
-							
+							}
 							else {
 								echo '<div class = "lower-border">';
 								echo '<h3> No data found </h3>';

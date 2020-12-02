@@ -27,8 +27,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <li><a href="home.php">Home</a></li>
             <li><a href="savings.php">Savings</a></li>
             <li><a href="edit.php">Edit</a></li>
-			<li><a href="expenses.php">Expenses</a></li>
-			<li><a href="logout.php">Logout</a></li>
+            <li><a href="expenses.php">Expenses</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
     <div id="main-content">
@@ -123,8 +123,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 $stmt = mysqli_query($link, $sql);
                 if (mysqli_num_rows($stmt) > 0) {
                     // output data of each row
-                    <p> Needs Expenses </p>
                     echo <<<GFG
+                        <p> Needs Expenses </p>
                         <tr class = "sublabel5">
                             <th> </th>
                             <th><u>Details</u></th>
@@ -146,7 +146,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <td>$details</td>
                                 <td>$$amount</td>
                                 <td>$frequency</td>
-                                <td>$dateAdded</td>		
+                                <td>$dateAdded</td>        
                             </tr>
                         GFG;
                     }
