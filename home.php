@@ -43,7 +43,7 @@ require_once "config.php";
 					<br>
 					<div> 
 						<?php
-							$sql = "SELECT amount, frequency, NPercent FROM income WHERE category = 'needs' AND userID = " . $_SESSION["userID"];	
+							$sql = "SELECT amount, frequency, NPercent FROM income WHERE userID = " . $_SESSION["userID"];	
 							$stmt = mysqli_query($link, $sql);							
 							if (mysqli_num_rows($stmt) > 0) {
 								$needsBudgeted = $needsSpent = 0;
