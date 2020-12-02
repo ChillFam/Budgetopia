@@ -28,11 +28,11 @@ html, body {
 }
 
 #main-content {
-    position: fixed;
-    display:block;
-    height:50%;
+    position: relative;
+    /* display: block;*/
+    height:10%;
     width:50%;
-	z-index: 4;
+	  z-index: 4;
 }
 footer {
     /* margin: 0;
