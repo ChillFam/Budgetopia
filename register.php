@@ -140,14 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$param_email = $email;
 			
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-				session_start();
-                            
-				// Store data in session variables
-				$_SESSION["loggedin"] = true;
-				$_SESSION["userID"] = $userID;
-				$_SESSION["username"] = $username; 
+            if(mysqli_stmt_execute($stmt)){ 
                 header("location: login.php");
             } else{
                 echo "SQL Error: ". mysqli_error($link);
