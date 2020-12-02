@@ -85,7 +85,7 @@ require_once "config.php";
 										$overbudget = abs($needsRemaining);
 										echo <<<GFG
 											<div class="needs lower-border">
-											<p class = "sublabel3" id="nPercent"> <a href="needs.php">
+											<p class = "sublabel3" id="nPercent"> <a class = "sub" href="needs.php">
 											Needs: $NPercent%
 											</a>    
 											</p>
@@ -96,7 +96,7 @@ require_once "config.php";
 									else {
 										echo <<<GFG
 											<div class="needs lower-border">
-											<p class = "sublabel3" id="nPercent"> <a href="needs.php">
+											<p class = "sublabel3" id="nPercent"> <a class = "sub" href="needs.php">
 											Needs: $NPercent%
 											</a>    
 											</p>
@@ -167,7 +167,7 @@ require_once "config.php";
 										$overbudget = abs($wantsRemaining);
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent"> <a href="wants.php">
+											<p class = "sublabel3" id="wPercent"> <a class = "sub" href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
@@ -178,7 +178,7 @@ require_once "config.php";
 									else {
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent"> <a href="wants.php">
+											<p class = "sublabel3" id="wPercent"> <a class = "sub" href="wants.php">
 											Wants: $WPercent%
 											</a>    
 											</p>
