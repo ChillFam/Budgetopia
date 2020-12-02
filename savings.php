@@ -182,7 +182,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<p class = "sublabel5">
 									$$leftToSave
 								</p>
+								<p>Budgeted: $budgeted</p>
 							</div>
+							
 							
 							<div>
 								<p class = "sublabel3">
