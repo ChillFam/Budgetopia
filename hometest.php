@@ -166,32 +166,34 @@ require_once "config.php";
 										$overbudget = abs($wantsRemaining);
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent">
-											<a  class = "sub" href="wants.php">
-											Wants: $WPercent%
-											</a>    
-											</p>
-											<p class = "sublabel5"><b>Over Budget by $$overbudget!</b></p>
+                                                <p class = "sublabel3" id="wPercent">
+                                                    <a  class = "sub" href="wants.php">
+                                                        Wants: $WPercent%
+                                                    </a>    
+                                                </p>
+                                                <p class = "sublabel5">
+                                                    <b>Over Budget by $$overbudget!</b>
+                                                </p>
 											</div>
 										GFG;
 									}
 									else {
 										echo <<<GFG
 											<div class="wants lower-border">
-											<p class = "sublabel3" id="wPercent">
-											<a class = "sub" href="wants.php">
-											Wants: $WPercent%
-											</a>    
-											</p>
-											<p class = "sublabel5" id="wBudgeted">
-											<b> Budgeted: $$wantsBudgeted </b>
-											</p>
-											<p class = "sublabel5" id="wSpent">
-											<b> Spent: $$wantsSpent </b>
-											</p>
-											<p class = "sublabel5" id="wRemain">
-											<b> Remaining: $$wantsRemaining </b>
-											</p>
+                                                <p class = "sublabel3" id="wPercent">
+                                                    <a class = "sub" href="wants.php">
+                                                        Wants: $WPercent%
+                                                    </a>    
+                                                </p>
+											    <p class = "sublabel5" id="wBudgeted">
+											        <b> Budgeted: $$wantsBudgeted </b>
+											    </p>
+											    <p class = "sublabel5" id="wSpent">
+											        <b> Spent: $$wantsSpent </b>
+											    </p>
+											    <p class = "sublabel5" id="wRemain">
+											        <b> Remaining: $$wantsRemaining </b>
+											    </p>
 											</div>
 										GFG;
 									}
@@ -225,14 +227,14 @@ require_once "config.php";
 								
 								echo <<<GFG
 									<div class="savings lower-border">
-									<p class = "sublabel3" id="sPercent">
-									<a class = "sub" href="savings.php">
-									Savings: $SPercent%
-									</a>
-									</p>
-									<p class = "sublabel5" id="sBudgeted">
-									<b> Budgeted: $$savingsBudgeted </b>
-									</p>
+                                        <p class = "sublabel3" id="sPercent">
+                                            <a class = "sub" href="savings.php">
+                                                Savings: $SPercent%
+                                            </a>
+                                        </p>
+									    <p class = "sublabel5" id="sBudgeted">
+									        <b> Budgeted: $$savingsBudgeted </b>
+									    </p>
 									</div>
 								GFG;
 								
