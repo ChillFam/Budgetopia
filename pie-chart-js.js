@@ -147,7 +147,7 @@ class PChart extends HTMLElement {
                 arc_middle = this.getPoint(this.x_origin,this.y_origin,this.radius+25,((start + end)) * Math.PI);
             }
             ctx.moveTo(arc_middle[0],arc_middle[1]);
-            ctx.fillText(this.vals[i].toFixed(2), arc_middle[0], arc_middle[1]);
+            ctx.fillText(this.vals[i], arc_middle[0], arc_middle[1]);
             ctx.closePath();
         }
     }
